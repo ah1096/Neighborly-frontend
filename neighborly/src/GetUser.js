@@ -35,7 +35,7 @@ export default function GetUser() {
             <div>
                 <p>
                     <button onClick={callAPI} id="button"className="btn" type="button">
-                        LOGIN
+                        call API
                     </button>
                 </p>
 

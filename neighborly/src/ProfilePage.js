@@ -6,10 +6,8 @@ import Footer from './Footer.js';
 export default function ProfilePage(){
     return(
         <div>
-            <Navbar/>
             <SideNav/>
             <GetUser/>
-            <Footer/>
         </div>
     )
 
