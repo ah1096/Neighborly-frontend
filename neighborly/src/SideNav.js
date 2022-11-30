@@ -4,7 +4,7 @@ import './App.css';
 export default function SideNav(){
     return(
 
-<div className="row">
+<div className="row pe-5">
     <div id="sidenav" className="d-flex w-25 col-12 flex-column flex-shrink-0 p-3 mt-5 bg-light">
 
         

@@ -12,10 +12,12 @@ const image = {
 
 export default function UserProfile(){
     return(
-<div class="card mb-3">
+
+<div class="row d-flex justify-content-end align-items-start pe-5 ps-3">
+<div class="card mb-3 w-75">
     <div class="row g-0">
         <div class="col-md-4">
-        <img className="d-block mx-lg-auto img-fluid rounded" 
+        <img className="d-block mx-lg-auto img-fluid rounded-circle m-3" 
                         loading="lazy" 
                         alt="a generic neighborhood" 
                         src= {image.imageUrl}
@@ -53,6 +55,7 @@ export default function UserProfile(){
             </div>
         </div>
     </div>
+</div>
 </div>
     )
 }
