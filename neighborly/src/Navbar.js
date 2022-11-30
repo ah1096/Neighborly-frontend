@@ -2,7 +2,7 @@
 export default function Navbar() {
     return(
 
-        <nav id="navbar" className="navbar navbar-expand-lg">
+        <nav id="navbar" className="navbar navbar-expand-lg bg-success">
 
             <div className="container-fluid">
 
