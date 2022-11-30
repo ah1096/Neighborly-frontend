@@ -15,7 +15,6 @@ export default function GetUser() {
     
     }
 
-
     const profile = user.filter(item => item.id === 9).map(item => 
         <div>
             <UserProfile
@@ -26,13 +25,9 @@ export default function GetUser() {
                 skills={item.skills}
                 // location={}
                 />
-
-
         </div>)
 
     
-    
-
     return (
         
         <div className="GetUser">

@@ -10,9 +10,9 @@ import ProfilePage from './ProfilePage.js';
 function App() {
   return (
     <div className="App">
+      
         {/* <LandingPage/> */}
         <ProfilePage/>
-        
 
     </div>
   );
