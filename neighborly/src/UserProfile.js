@@ -1,3 +1,4 @@
+
 import placeholder from './images/neighborhood.jpg';
 const image = {
     name: 'placeholder',
@@ -7,10 +8,7 @@ const image = {
 }
 
 
-
-
-
-export default function UserProfile(){
+export default function UserProfile(props){
     return(
 
 <div class="row d-flex justify-content-end align-items-start pe-5 ps-3">
@@ -30,8 +28,8 @@ export default function UserProfile(){
 
         <div class="col-md-8">
             <div class="card-body">
-            <h5 class="card-title">Username <span class="badge bg-secondary">ROLE</span></h5>
-            <p class="card-text">this is a bio text field</p>
+            <h5 class="card-title">{props.username}<span class="badge bg-secondary">{props.roletag}</span></h5>
+            <p class="card-text">{props.biotext}</p>
 
             
                 <p>
@@ -41,17 +39,11 @@ export default function UserProfile(){
                 </p>
                     <div class="collapse" id="collapseExample">
                     <div class="card card-body">
-                        List of skills goes here
+                        {props.skills}
                     </div>
                 </div>
 
-
-
-
-
-
-
-            <p class="card-text"><small class="text-muted">LOCATION TAG</small></p>
+            <p class="card-text"><small class="text-muted">{props.location}</small></p>
             </div>
         </div>
     </div>
