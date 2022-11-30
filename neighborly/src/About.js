@@ -21,7 +21,7 @@ export default function About(){
             <div className="col-10 col-sm-8 col-lg-6">
 
                 {/* <span className="hover-img"> */}
-                    <img id="profilephoto" className="d-block mx-lg-auto img-fluid" 
+                    <img className="d-block mx-lg-auto img-fluid" 
                         loading="lazy" 
                         alt="a generic neighborhood" 
                         src= {image.imageUrl}
