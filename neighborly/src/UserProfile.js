@@ -1,8 +1,8 @@
 
-import placeholder from './images/neighborhood.jpg';
+import defaulticon from './images/defaulticon.png';
 const image = {
-    name: 'placeholder',
-    imageUrl: placeholder,
+    name: 'defaulticon',
+    imageUrl: defaulticon,
     imageHeight: 200,
     imageWidth: 200,
 }
