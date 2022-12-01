@@ -5,7 +5,7 @@ import UserProfile from './UserProfile.js'
 export default function GetUser() {
     const [user, setUser] = useState([])
     const callAPI = () => {
-        axios.get('https://8000-ah1096-neighborly-6d4agkbyvba.ws-us77.gitpod.io/api/myapp')
+        axios.get('https://8000-ah1096-neighborly-6d4agkbyvba.ws-us77.gitpod.io/api/user/')
         .then(response => {
             console.log(response.data)
             setUser(response.data)
@@ -15,15 +15,15 @@ export default function GetUser() {
     
     }
 
-    const profile = user.filter(item => item.id === 9).map(item => 
+    const profile = user.filter(item => item.id === 20).map(item => 
         <div>
             <UserProfile
                 username={item.username}
                 // firstname={item.first_name}
-                // roletag={}
+                roletag={item.role}
                 biotext={item.biotext}
                 skills={item.skills}
-                // location={}
+                location={item.location}
                 />
         </div>)
 
