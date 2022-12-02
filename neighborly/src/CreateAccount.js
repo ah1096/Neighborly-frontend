@@ -1,58 +1,154 @@
+import { useState } from "react";
+import axios from "axios";
+
+
+
 
 export default function CreateAccount(){
+
+const [state, setState] = useState({
+        email: "",
+        password: "",
+        username: "",
+        first_name: "",
+        last_name: "",
+        bio: ""
+    });
+    
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setState({
+        ...state,
+        [e.target.name]: value
+        });
+    };
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const userData = {
+        email: state.email,
+        password: state.password,
+        username: state.username,
+        first_name: state.first_name,
+        last_name: state.last_name,
+        bio: state.bio,
+        };
+        axios.post("https://8000-ah1096-neighborly-6d4agkbyvba.ws-us77.gitpod.io/api/user/", userData).then((response) => {
+        console.log(response.status);
+        console.log(response.data);
+        });
+    };
+
+// from this article: https://blog.logrocket.com/understanding-axios-post-requests/
+
+
+
+
     return(
 
+    <div className="row justify-content-center">
 
-    <div class="row justify-content-center">
-
-        <div class="col-4">
+        <div className="col-4">
 {/* //EMAIL AND PASSWORD INPUTS */}
-            <div class="mt-5 mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="emailinput" placeholder="name@example.com"/>
+
+        <form>
+            <div className="mt-5 mb-3">
+                <label htmlFor="email" className="form-label">Email address</label>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        className="form-control" 
+                        id="emailinput" 
+                        placeholder="name@example.com"
+                        onSubmit={handleSubmit}
+                        value = {state.email}
+                        onChange={handleChange}
+                    />
             </div>
 
-            <div class="mb-3">
-                <label for="inputPassword" class="form-label">Create password</label>
-                <input type="password" class="form-control" id="passwordinput"/>
+            <div className="mb-3">
+                <label htmlFor="inputPassword" className="form-label">Create password</label>
+                    <input 
+                        type="password" 
+                        name="password"
+                        className="form-control" 
+                        id="passwordinput"
+                        onSubmit={handleSubmit}
+                        value={state.password}
+                        onChange={handleChange}
+                    />
             </div>
 
-            <div class="mb-3">
-                <label for="inputPassword" class="form-label">Re-enter password</label>
-                <input type="password" class="form-control" id="passwordinput2"/>
-            </div>
+{/* unsure how to make it so that passwords have to match in order for them to be registered; revisit later */}
+            {/* <div className="mb-3">
+                <label for="inputPassword" className="form-label">Re-enter password</label>
+                <input type="password" className="form-control" id="passwordinput2"/>
+            </div> */}
 
 {/* //USERNAME INPUT */}
 
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Username</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+            <div className="mb-3">
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Username</label>
+                <textarea 
+                className="form-control" 
+                name="username"
+                id="usernameinput" 
+                rows="1"
+                onSubmit={handleSubmit}
+                value={state.username}
+                onChange={handleChange}
+                ></textarea>
             </div>
 
 
 
 {/* //FIRST AND LAST NAME INPUT */}
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">First & last name</span>
-                <input type="text" aria-label="First name" class="form-control"/>
-                <input type="text" aria-label="Last name" class="form-control"/>
+            <div className="input-group mb-3">
+                <span className="input-group-text">First & last name</span>
+                <input 
+                    type="text" 
+                    className="form-control"
+                    name="first_name"
+                    id="firstnamesubmit"
+                    onSubmit={handleSubmit}
+                    value={state.first_name}
+                    onChange={handleChange}
+                    />
+                <input 
+                    type="text"
+                    className="form-control"
+                    name="last_name"
+                    id="lastnamesubmit"
+                    onSubmit={handleSubmit}
+                    value={state.last_name}
+                    onChange={handleChange}
+                    />
             </div>
 
 
     {/* //BUILD A PROFILE */}
 
 
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Bio</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <div className="mb-3">
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Bio</label>
+                <textarea 
+                className="form-control" 
+                name="bio"
+                id="bioinput" 
+                rows="3"
+                onSubmit={handleSubmit}
+                value={state.bio}
+                onChange={handleChange}
+                ></textarea>
             </div>
 
 
-            <select class="mb-3 form-select" id="roleinput">
-                <option selected>Select a role tag</option>
+            {/* <select className="mb-3 form-select" id="roleinput">
+                <option selected>Select a role tag</option> */}
     {/* figure out how to add tooltips to give description of role tag on hover */}
-                <option value="1">
+                
+                {/* <option value="1">
                     User</option>
 
                 <option value="2">
@@ -66,9 +162,11 @@ export default function CreateAccount(){
 
                 <option value="5">
                     Helper</option>
-            </select>
+            </select> */}
 
-        <input class="btn btn-primary" type="submit" value="Create Account"/>
+            <input className="btn btn-primary" type="submit" value="Create Account" onClick={handleSubmit}/>
+
+        </form>
     </div>
 </div>
     )

@@ -9,7 +9,7 @@ import CreateAccount from './CreateAccount.js'
 
 function App() {
 
-  const [page, setPage] = useState('home')
+  const [page, setPage] = useState('createaccount')
 
   return (
     <div className="App">

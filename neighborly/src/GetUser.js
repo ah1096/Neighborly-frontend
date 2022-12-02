@@ -4,6 +4,7 @@ import UserProfile from './UserProfile.js'
 
 export default function GetUser() {
     const [user, setUser] = useState([])
+    
     const callAPI = () => {
         axios.get('https://8000-ah1096-neighborly-6d4agkbyvba.ws-us77.gitpod.io/api/user/')
         .then(response => {
@@ -14,7 +15,7 @@ export default function GetUser() {
         })
     }
 
-    const profile = user.filter(item => item.id === 20).map(item => 
+    const profile = user.filter(item => item.id === 15).map(item => 
         <div>
             <UserProfile
                 username={item.username}
