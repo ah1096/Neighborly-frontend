@@ -12,10 +12,9 @@ export default function GetUser() {
         }).catch(error =>{
             console.log(error)
         })
-    
     }
 
-    const profile = user.filter(item => item.id === 20).map(item => 
+    const profile = user.filter(item => item.id === 15).map(item => 
         <div>
             <UserProfile
                 username={item.username}
