@@ -9,7 +9,7 @@ const image = {
 
 
 
-export default function About(){
+export default function About(props){
 
     return(
         <div className="vh-100" id="AboutSection">
@@ -44,7 +44,7 @@ export default function About(){
                         </p>
                     </div>
 
-                    <button className="btn btn-primary" type="submit">
+                    <button onClick={() => props.setpage('createaccount')} className="btn btn-primary" type="submit" >
                     sign up! 
                     </button>
             </div>

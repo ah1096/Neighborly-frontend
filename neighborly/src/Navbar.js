@@ -23,8 +23,15 @@ export default function Navbar(props) {
                     </ul>
 
                     <div className="d-flex">
-                        <button className="btn btn-primary" type="submit">
+                        <button onClick={() => props.setpage('login')} className="btn btn-primary" type="submit">
                             login 
+                        </button>
+                    </div>
+
+
+                    <div className="d-flex">
+                        <button onClick={() => props.setpage('createaccount')} className="btn btn-primary" type="submit">
+                            sign up
                         </button>
                     </div>
 

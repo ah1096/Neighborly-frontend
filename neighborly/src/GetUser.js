@@ -14,7 +14,7 @@ export default function GetUser() {
         })
     }
 
-    const profile = user.filter(item => item.id === 15).map(item => 
+    const profile = user.filter(item => item.id === 20).map(item => 
         <div>
             <UserProfile
                 username={item.username}

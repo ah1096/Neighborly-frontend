@@ -2,10 +2,10 @@ import './App.css';
 import LandingPage from './LandingPage.js';
 import Navbar from './Navbar.js';
 import Footer from './Footer.js';
-// import SideNav from './SideNav.js';
-// import UserProfile from './UserProfile.js';
 import { useState } from 'react';
 import ProfilePage from './ProfilePage.js';
+import Login from './Login.js';
+import CreateAccount from './CreateAccount.js'
 
 function App() {
 
@@ -17,6 +17,8 @@ function App() {
         <Navbar setpage={setPage}/>
           {page === 'home' && <LandingPage />}
           {page === 'profile' && <ProfilePage />}  
+          {page === 'login' && <Login />}
+          {page === 'createaccount' && <CreateAccount />}
         <Footer />
     
 
