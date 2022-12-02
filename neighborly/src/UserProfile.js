@@ -28,12 +28,12 @@ export default function UserProfile(props){
 
         <div className="col-md-8">
             <div className="card-body">
-            <h5 className="card-title">{props.username}<span className="badge bg-secondary">{props.roletag}</span></h5>
+            <h5 className="card-title">{props.username + "   "}<span className="badge bg-secondary">{props.roletag}</span></h5>
             <p className="card-text">{props.biotext}</p>
 
             
                 <p>
-                    <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    <button className="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         skills
                     </button>
                 </p>
