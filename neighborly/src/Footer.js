@@ -1,10 +1,10 @@
 export default function Footer(){
     return(
-        <div>
+        <div className="text-center">
             <footer className="footer py-3" id="footer">
                 <div className="container">
                     <span className="text-muted">
-                        designed and built by Alyssa Holbert
+                        designed and built by <a href="https://github.com/ah1096">Alyssa Holbert</a>
                     </span>
                 </div>
             </footer>
