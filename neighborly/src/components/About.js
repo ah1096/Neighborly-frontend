@@ -1,4 +1,5 @@
 import placeholder from './images/neighborhood.jpg';
+
 const image = {
     name: 'placeholder',
     imageUrl: placeholder,
