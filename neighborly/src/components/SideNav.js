@@ -9,30 +9,36 @@ export default function SideNav(){
         
         <ul className="nav nav-pills flex-column mb-auto">
 
-        <li className="nav-item">
+        <li className="nav-item badge rounded-pill text-bg-primary mb-3">
             <a href="#" className="nav-link link-dark" >
-            {/* <svg className="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg> */}
-            Dashboard
+            <i class="bi bi-house-door-fill me-3"></i>
+                <span id="sidenavtext">
+                Dashboard
+                </span>
             </a>
         </li>
 
-        <li>
+        <li className="nav-item badge rounded-pill text-bg-primary mb-3">
             <a href="#" className="nav-link link-dark">
-            {/* <svg className="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg> */}
-            Exchange
+            <i class="bi bi-arrow-left-right me-3"></i>
+                <span id="sidenavtext">
+                    Exchange
+                </span>
             </a>
         </li>
 
-        <li>
+        <li className="nav-item badge rounded-pill text-bg-primary mb-3">
             <a href="#" className="nav-link link-dark">
-            {/* <svg className="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg> */}
-            Social
+            <i class="bi bi-chat-left-heart me-3"></i>
+                <span id="sidenavtext">
+                    Social
+                </span>
             </a>
         </li>
 
-        <li>
+        <li className="nav-item badge rounded-pill text-bg-primary mb-3">
             <a href="#" className="nav-link link-dark">
-            {/* <svg className="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg> */}
+            <i class="bi bi-plus-lg me-3"></i>
             Post
             </a>
         </li>
