@@ -1,4 +1,5 @@
 import placeholder from './images/neighborhood.jpg';
+
 const image = {
     name: 'placeholder',
     imageUrl: placeholder,
@@ -9,7 +10,7 @@ const image = {
 
 
 
-export default function About(){
+export default function About(props){
 
     return(
         <div className="vh-100" id="AboutSection">
@@ -43,10 +44,7 @@ export default function About(){
                         Locavore mixtape polaroid, biodiesel pork belly woke bitters affogato thundercats bruh. Ramps freegan ennui godard hell of, polaroid before they sold out. Hoodie fashion axe dreamcatcher glossier, chia next level typewriter franzen edison bulb VHS shaman marfa. La croix kale chips disrupt prism, selfies cold-pressed freegan distillery. Brooklyn chambray ascot you probably haven't heard of them. Squid prism blog banjo flannel. Adaptogen pop-up photo booth hella taxidermy quinoa blog gluten-free twee hexagon tonx keffiyeh fashion axe trust fund raclette.
                         </p>
                     </div>
-
-                    <button className="btn btn-primary" type="submit">
-                    sign up! 
-                    </button>
+                    
             </div>
         </div>
         </div>

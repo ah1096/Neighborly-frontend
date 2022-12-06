@@ -1,26 +1,18 @@
 import './App.css';
-import LandingPage from './LandingPage.js';
-import Navbar from './Navbar.js';
-import Footer from './Footer.js';
-// import SideNav from './SideNav.js';
-// import UserProfile from './UserProfile.js';
-import { useState } from 'react';
-import ProfilePage from './ProfilePage.js';
+import Navbar from './components/Navbar.js';
+import Footer from './components/Footer.js';
+import About from './components/About.js';
+import { Outlet } from "react-router-dom";
+import { GlobalProvider } from './context/GlobalState.js';
 
 function App() {
 
-  const [page, setPage] = useState('home')
-
   return (
-    <div className="App">
-
-        <Navbar setpage={setPage}/>
-          {page === 'home' && <LandingPage />}
-          {page === 'profile' && <ProfilePage />}  
-        <Footer />
-    
-
-    </div>
+    <GlobalProvider>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </GlobalProvider>
   );
 }
 
