@@ -5,10 +5,40 @@ const image = {
     imageUrl: defaulticon,
     imageHeight: 200,
     imageWidth: 200,
-}
+};
+
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useGlobalState } from "../context/GlobalState.js";
 
 
 export default function UserProfile(props){
+    const [ state, dispatch ] = useGlobalState();
+
+    // useEffect(() => {
+    //     async function getUser(){}
+    //     let user = await request({
+    //         url:`user/${data.user_id}`,
+    //         method: 'GET'
+    //     })
+    // }, [])
+
+    const client = axios.create({
+        baseURL: "https://8000-ah1096-neighborly-6d4agkbyvba.ws-us77.gitpod.io/api/user" 
+    });
+
+    React.useEffect(() => {
+        async function getUser() {
+            const user = await client.get(`/${data.user_id}`);
+            setUser(user.data);
+        }
+        getUser();
+        }, []);
+
+
+
+
+
     return(
 
 <div className="row d-flex justify-content-end align-items-start pe-5 ps-3">
@@ -28,8 +58,8 @@ export default function UserProfile(props){
 
         <div className="col-md-8">
             <div className="card-body">
-            <h5 className="card-title">{props.username + "   "}<span className="badge bg-secondary">{props.roletag}</span></h5>
-            <p className="card-text">{props.biotext}</p>
+            <h5 className="card-title">{state.profile.username + "   "}<span className="badge bg-secondary">{state.profile.roletag}</span></h5>
+            <p className="card-text">{state.profile.biotext}</p>
 
             
                 <p>
@@ -39,11 +69,11 @@ export default function UserProfile(props){
                 </p>
                     <div className="collapse" id="collapseExample">
                     <div className="card card-body">
-                        {props.skills}
+                        {state.profile.skills}
                     </div>
                 </div>
 
-            <p className="card-text"><small className="text-muted">{props.location}</small></p>
+            <p className="card-text"><small className="text-muted">{state.profile.location}</small></p>
             </div>
         </div>
     </div>

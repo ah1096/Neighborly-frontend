@@ -1,18 +1,17 @@
 import './App.css';
 import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
-import { useState } from 'react';
+import About from './components/About.js';
+import { Outlet } from "react-router-dom";
 import { GlobalProvider } from './context/GlobalState.js';
 
 function App() {
 
-  const [page, setPage] = useState('home')
-
   return (
     <GlobalProvider>
       <Navbar />
-      <Footer />
       <Outlet />
+      <Footer />
     </GlobalProvider>
   );
 }
