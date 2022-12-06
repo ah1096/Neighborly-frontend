@@ -5,12 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
+import {createRoot} from 'react-dom/client';
+import {BrowserRouter as Router} from 'react-router-dom';
 
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+    <Router>
+        <App/>
+    </Router>
   </React.StrictMode>
 );
 

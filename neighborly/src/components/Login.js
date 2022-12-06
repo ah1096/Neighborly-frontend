@@ -26,7 +26,7 @@ export default function Login(){
                     currentUserToken: resp.access,
                     currentUser: data
                 })
-                navigate('/profile')
+                navigate('/profile') //change to profile, RRDOM; refer to Lindsay or Mason for help or Tyler
             });
     }
 
@@ -34,32 +34,32 @@ export default function Login(){
 
 
     return(
-    <div class="row justify-content-center">
+    <div className="row justify-content-center">
         <form onSubmit={handleLogin}>
-            <div class="col-4 mt-5 mb-3">
-                <label htmlFor="username" class="form-label">Username</label>
+            <div className="col-4 mt-5 mb-3">
+                <label htmlFor="username" className="form-label">Username</label>
                 <input 
                     type="username" 
                     id="username"
                     name="username"
-                    class="form-control" 
+                    className="form-control" 
                     onChange={(e) => setUsername(e.target.value)}
                     required
                 />
 
-                <label htmlFor="pass" class="col-sm-2 col-form-label">Password</label>
+                <label htmlFor="pass" className="col-sm-2 col-form-label">Password</label>
                 <input 
                     type="password" 
                     id="pass"
-                    class="form-control" 
+                    className="form-control" 
                     name="password"
-                    minlength="8"
+                    minLength="2"
                     required
                     onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <input 
-                    class="btn btn-primary mt-3" 
+                    className="btn btn-primary mt-3" 
                     type="submit" 
                     value="Login"
                 />
