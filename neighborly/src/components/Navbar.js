@@ -8,7 +8,6 @@ import AuthService from "../services/auth.service"
 export default function Navbar(props) {
     const [ state, dispatch ] = useGlobalState();
 
-    
     let navigate = useNavigate();
 
             function Logout() {

@@ -1,46 +1,35 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import AuthService from "../services/auth.service";
+import { useNavigate } from "react-router-dom"
 
 
 
 
 export default function CreateAccount(){
+let navigate = useNavigate()
 
-const [state, setState] = useState({
+const [user, setUser] = useState({
         email: "",
         password: "",
+        passwordConf: "",
         username: "",
         first_name: "",
         last_name: "",
-        bio: ""
+        biotext: ""
     });
     
-    const handleChange = (e) => {
-        const value = e.target.value;
-        setState({
-        ...state,
-        [e.target.name]: value
-        });
-    };
+    const handleChange = (key, value) => {
+        setUser({
+            ...user,
+            [key]: value
+    })
+    }
     
-    const handleSubmit = (e) => {
+    const handleRegister = (e) => {
         e.preventDefault();
-        const userData = {
-        email: state.email,
-        password: state.password,
-        username: state.username,
-        first_name: state.first_name,
-        last_name: state.last_name,
-        bio: state.bio,
-        };
-        axios.post("https://8000-ah1096-neighborly-6d4agkbyvba.ws-us77.gitpod.io/api/user/", userData).then((response) => {
-        console.log(response.status);
-        console.log(response.data);
-        });
-    };
-
-// from this article: https://blog.logrocket.com/understanding-axios-post-requests/
-
+        AuthService.register(user).then(()=> navigate('/profile'))
+    }
 
 
 
@@ -51,7 +40,7 @@ const [state, setState] = useState({
         <div className="col-4">
 {/* //EMAIL AND PASSWORD INPUTS */}
 
-        <form>
+        <form onSubmit={handleRegister}>
             <div className="mt-5 mb-3">
                 <label htmlFor="email" className="form-label">Email address</label>
                     <input 
@@ -60,9 +49,8 @@ const [state, setState] = useState({
                         className="form-control" 
                         id="emailinput" 
                         placeholder="name@example.com"
-                        onSubmit={handleSubmit}
-                        value = {state.email}
-                        onChange={handleChange}
+                        onChange={(e) => handleChange('email', e.target.value)}
+                        required
                     />
             </div>
 
@@ -73,30 +61,35 @@ const [state, setState] = useState({
                         name="password"
                         className="form-control" 
                         id="passwordinput"
-                        onSubmit={handleSubmit}
-                        value={state.password}
-                        onChange={handleChange}
+                        minLength="8"
+                        required
+                        onChange={(e) => handleChange('password', e.target.value)}
                     />
             </div>
 
-{/* unsure how to make it so that passwords have to match in order for them to be registered; revisit later */}
-            {/* <div className="mb-3">
-                <label for="inputPassword" className="form-label">Re-enter password</label>
-                <input type="password" className="form-control" id="passwordinput2"/>
-            </div> */}
+
+            <div className="mb-3">
+                <label htmlFor="inputPassword" className="form-label">Re-enter password</label>
+                <input 
+                    type="password" 
+                    className="form-control" 
+                    id="passwordinput2"
+                    minLength="8"
+                    required
+                    onChange={(e) => handleChange('passwordConf', e.target.value)}/>
+            </div>
 
 {/* //USERNAME INPUT */}
 
             <div className="mb-3">
                 <label htmlFor="exampleFormControlTextarea1" className="form-label">Username</label>
                 <textarea 
-                className="form-control" 
-                name="username"
-                id="usernameinput" 
-                rows="1"
-                onSubmit={handleSubmit}
-                value={state.username}
-                onChange={handleChange}
+                    className="form-control" 
+                    name="username"
+                    id="usernameinput" 
+                    rows="1"
+                    onChange={(e) => handleChange('username', e.target.value)}
+                    required
                 ></textarea>
             </div>
 
@@ -111,18 +104,16 @@ const [state, setState] = useState({
                     className="form-control"
                     name="first_name"
                     id="firstnamesubmit"
-                    onSubmit={handleSubmit}
-                    value={state.first_name}
-                    onChange={handleChange}
+                    required
+                    onChange={(e) => handleChange('firstName', e.target.value)}
                     />
                 <input 
                     type="text"
                     className="form-control"
                     name="last_name"
                     id="lastnamesubmit"
-                    onSubmit={handleSubmit}
-                    value={state.last_name}
-                    onChange={handleChange}
+                    required
+                    onChange={(e) => handleChange('lastName', e.target.value)}
                     />
             </div>
 
@@ -134,12 +125,11 @@ const [state, setState] = useState({
                 <label htmlFor="exampleFormControlTextarea1" className="form-label">Bio</label>
                 <textarea 
                 className="form-control" 
-                name="bio"
+                name="biotext"
                 id="bioinput" 
                 rows="3"
-                onSubmit={handleSubmit}
-                value={state.bio}
-                onChange={handleChange}
+                required
+                onChange={(e) => handleChange('biotext', e.target.value)}
                 ></textarea>
             </div>
 
@@ -164,7 +154,19 @@ const [state, setState] = useState({
                     Helper</option>
             </select> */}
 
-            <input className="btn btn-primary" type="submit" value="Create Account" onClick={handleSubmit}/>
+            <input 
+            className="btn btn-primary" 
+            type="submit" 
+            value="Create Account"
+            disabled={(
+                user.password &&
+                user.password.length >= 8 &&
+                user.password === user.passwordConf &&
+                user.firstName &&
+                user.lastName &&
+                user.email
+            ) ? false : true}
+            />
 
         </form>
     </div>
