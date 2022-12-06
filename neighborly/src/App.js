@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
-import About from './components/About.js';
+import SideNav from './components/SideNav.js';
 import { Outlet } from "react-router-dom";
 import { GlobalProvider } from './context/GlobalState.js';
 
@@ -12,6 +12,7 @@ function App() {
       <Navbar />
       <Outlet />
       <Footer />
+      <SideNav />
     </GlobalProvider>
   );
 }

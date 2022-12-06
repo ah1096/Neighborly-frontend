@@ -3,7 +3,14 @@ import { useGlobalState } from "../context/GlobalState";
 import { useNavigate } from "react-router-dom"
 import AuthService from "../services/auth.service"
 
+import logo from './images/Neighborly-Logo.png';
 
+const NavLogo = {
+    name: 'NavLogo',
+    imageUrl: logo,
+    imageHeight: 80,
+    imageWidth: 140,
+}
 
 export default function Navbar(props) {
     const [ state, dispatch ] = useGlobalState();
@@ -18,15 +25,21 @@ export default function Navbar(props) {
 
     return(
 
-        <nav id="navbar" className="navbar navbar-expand-lg bg-success">
+        <nav id="navbar" className="navbar navbar-expand-lg">
 
             <div className="container-fluid">
 
             <Link to="/home" className="navbar-brand">
-                Neighborly
+                <img 
+                        alt="the Neighborly site logo" 
+                        src= {NavLogo.imageUrl}
+                        style={{
+                            width: NavLogo.imageWidth,
+                            height: NavLogo.imageHeight
+                            }}></img>
             </Link>
 
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button id="button" className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
 
@@ -54,7 +67,7 @@ export default function Navbar(props) {
 
                     {!state.currentUser && (
                     <div className="d-flex">
-                        <Link to="/login" className="btn btn-primary" type="submit">
+                        <Link to="/login" id="button" className="btn btn-primary" type="submit">
                             login 
                         </Link>
                     </div>
@@ -64,7 +77,7 @@ export default function Navbar(props) {
 
                     {!state.currentUser && (
                     <div className="d-flex">
-                        <Link to="/register" className="btn btn-primary" type="submit">
+                        <Link to="/register" id="button" className="btn btn-primary" type="submit">
                             sign up
                         </Link>
                     </div>

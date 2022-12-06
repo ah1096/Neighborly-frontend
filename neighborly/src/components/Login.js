@@ -37,36 +37,39 @@ export default function Login(){
 
     return(
     <div className="row justify-content-center">
-        <form onSubmit={handleLogin}>
-            <div className="col-4 mt-5 mb-3">
-                <label htmlFor="username" className="form-label">Username</label>
-                <input 
-                    type="username" 
-                    id="username"
-                    name="username"
-                    className="form-control" 
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
+        <div className="col-4">
+            <form onSubmit={handleLogin}>
+                <div className="mt-5 mb-3">
+                    <label htmlFor="username" className="form-label">Username</label>
+                    <input 
+                        type="username" 
+                        id="username"
+                        name="username"
+                        className="form-control" 
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
 
-                <label htmlFor="pass" className="col-sm-2 col-form-label">Password</label>
-                <input 
-                    type="password" 
-                    id="pass"
-                    className="form-control" 
-                    name="password"
-                    minLength="2"
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                    <label htmlFor="pass" className="col-form-label">Password</label>
+                    <input 
+                        type="password" 
+                        id="pass"
+                        className="form-control" 
+                        name="password"
+                        minLength="2"
+                        required
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
 
-                <input 
-                    className="btn btn-primary mt-3" 
-                    type="submit" 
-                    value="Login"
-                />
-            </div>
-        </form>
+                    <input 
+                        className="btn btn-primary mt-3" 
+                        id="button2"
+                        type="submit" 
+                        value="Login"
+                    />
+                </div>
+            </form>
+        </div>
     </div>
 
     
