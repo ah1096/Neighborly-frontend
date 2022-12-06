@@ -3,6 +3,7 @@ import AuthService from "../services/auth.service.js";
 import { useNavigate } from 'react-router-dom';
 import { useGlobalState } from "../context/GlobalState.js";
 import jwtDecode from "jwt-decode";
+import request from "../services/api.request.js";
 
 
 
@@ -10,7 +11,7 @@ export default function Login(){
 
     let navigate = useNavigate();
 
-    const [ state, dispatch ] = useGlobalState();
+    const [ , dispatch ] = useGlobalState();
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -22,9 +23,10 @@ export default function Login(){
             .login(username, password)
             .then(async (resp) => {
                 let data = jwtDecode(resp.access)
+
                 await dispatch({
                     currentUserToken: resp.access,
-                    currentUser: data
+                    currentUser: data,
                 })
                 navigate('/profile') //change to profile, RRDOM; refer to Lindsay or Mason for help or Tyler
             });

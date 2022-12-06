@@ -1,12 +1,30 @@
+import { Link } from "react-router-dom";
+import { useGlobalState } from "../context/GlobalState";
+import { useNavigate } from "react-router-dom"
+import AuthService from "../services/auth.service"
+
+
 
 export default function Navbar(props) {
+    const [ state, dispatch ] = useGlobalState();
+
+    let navigate = useNavigate();
+
+            function Logout() {
+                navigate("home");
+                AuthService.logout();
+                window.location.reload();
+                }
+
     return(
 
         <nav id="navbar" className="navbar navbar-expand-lg bg-success">
 
             <div className="container-fluid">
 
-            <a className="navbar-brand" onClick={() => props.setpage('home')} aria-current="page" href="#">Neighborly</a>
+            <Link to="/home" className="navbar-brand">
+                Neighborly
+            </Link>
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -16,29 +34,47 @@ export default function Navbar(props) {
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
+                    {state.currentUser && (
                         <li className="nav-item">
-                        <a className="nav-link" onClick={() => props.setpage('profile')} href="#">Profile Page</a>
+                        <Link to="/profile" className="nav-link">
+                            Profile Page
+                        </Link>
                         </li>
+                    )}
 
                     </ul>
 
+                    {state.currentUser && (
+                        <div className="d-flex">
+                            <Link to='/' className="nav-link" 
+                                onClick={Logout}>Log Out
+                            </Link>
+                        </div>
+                    )}
+
+                    {!state.currentUser && (
                     <div className="d-flex">
-                        <button onClick={() => props.setpage('login')} className="btn btn-primary" type="submit">
+                        <Link to="/login" className="btn btn-primary" type="submit">
                             login 
-                        </button>
+                        </Link>
                     </div>
+                    )
+                    }
 
 
+                    {!state.currentUser && (
                     <div className="d-flex">
-                        <button onClick={() => props.setpage('createaccount')} className="btn btn-primary" type="submit">
+                        <Link to="/register" className="btn btn-primary" type="submit">
                             sign up
-                        </button>
+                        </Link>
                     </div>
+                    )
+                    }
+
 
                 </div>
 
             </div>
         </nav>
 
-)
-}
+)}

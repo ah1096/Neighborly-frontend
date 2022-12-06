@@ -5,10 +5,35 @@ const image = {
     imageUrl: defaulticon,
     imageHeight: 200,
     imageWidth: 200,
-}
+};
+
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useGlobalState } from "../context/GlobalState.js";
+import request from '../services/api.request';
+import { useState } from "react"
 
 
 export default function UserProfile(props){
+    const [ state, dispatch ] = useGlobalState();
+    const [userData, setUserData] = useState(null)
+
+    useEffect(() => {
+        async function getUserData() {
+            let options = {
+                url: `user/${state.currentUser.user_id}`,
+                method: 'GET',
+            }
+            let resp = await request(options)
+            setUserData(resp.data)
+        }
+        getUserData();
+        console.log(state.currentUser)
+        }, []);
+
+        console.log(userData)
+        if (!userData) return null
+
     return(
 
 <div className="row d-flex justify-content-end align-items-start pe-5 ps-3">
@@ -28,8 +53,8 @@ export default function UserProfile(props){
 
         <div className="col-md-8">
             <div className="card-body">
-            <h5 className="card-title">{props.username + "   "}<span className="badge bg-secondary">{props.roletag}</span></h5>
-            <p className="card-text">{props.biotext}</p>
+            <h5 className="card-title">{userData.username + "   "}<span className="badge bg-secondary">{userData.roletag}</span></h5>
+            <p className="card-text">{userData.biotext}</p>
 
             
                 <p>
@@ -39,11 +64,11 @@ export default function UserProfile(props){
                 </p>
                     <div className="collapse" id="collapseExample">
                     <div className="card card-body">
-                        {props.skills}
+                        {userData.skills}
                     </div>
                 </div>
 
-            <p className="card-text"><small className="text-muted">{props.location}</small></p>
+            <p className="card-text"><small className="text-muted">{userData.location}</small></p>
             </div>
         </div>
     </div>
