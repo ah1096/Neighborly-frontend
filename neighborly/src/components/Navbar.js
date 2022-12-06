@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
 import { useGlobalState } from "../context/GlobalState";
+import { useNavigate } from "react-router-dom"
+import AuthService from "../services/auth.service"
 
 
 
 export default function Navbar(props) {
     const [ state, dispatch ] = useGlobalState();
 
+    
+    let navigate = useNavigate();
+
+            function Logout() {
+                navigate("home");
+                AuthService.logout();
+                window.location.reload();
+                }
 
     return(
 
@@ -35,6 +45,14 @@ export default function Navbar(props) {
 
                     </ul>
 
+                    {state.currentUser && (
+                        <div className="d-flex">
+                            <Link to='/' className="nav-link" 
+                                onClick={Logout}>Log Out
+                            </Link>
+                        </div>
+                    )}
+
                     {!state.currentUser && (
                     <div className="d-flex">
                         <Link to="/login" className="btn btn-primary" type="submit">
@@ -54,10 +72,10 @@ export default function Navbar(props) {
                     )
                     }
 
+
                 </div>
 
             </div>
         </nav>
 
-)
-}
+)}
