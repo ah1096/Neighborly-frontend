@@ -26,6 +26,7 @@ export default function Login(){
 
                 await dispatch({
                     currentUserToken: resp.access,
+                    currentUser: data,
                 })
                 navigate('/profile') //change to profile, RRDOM; refer to Lindsay or Mason for help or Tyler
             });

@@ -10,34 +10,29 @@ const image = {
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useGlobalState } from "../context/GlobalState.js";
+import request from '../services/api.request';
+import { useState } from "react"
 
 
 export default function UserProfile(props){
     const [ state, dispatch ] = useGlobalState();
+    const [userData, setUserData] = useState(null)
 
-    // useEffect(() => {
-    //     async function getUser(){}
-    //     let user = await request({
-    //         url:`user/${data.user_id}`,
-    //         method: 'GET'
-    //     })
-    // }, [])
-
-    const client = axios.create({
-        baseURL: "https://8000-ah1096-neighborly-6d4agkbyvba.ws-us77.gitpod.io/api/user" 
-    });
-
-    React.useEffect(() => {
-        async function getUser() {
-            const user = await client.get(`/${data.user_id}`);
-            setUser(user.data);
+    useEffect(() => {
+        async function getUserData() {
+            let options = {
+                url: `user/${state.currentUser.user_id}`,
+                method: 'GET',
+            }
+            let resp = await request(options)
+            setUserData(resp.data)
         }
-        getUser();
+        getUserData();
+        console.log(state.currentUser)
         }, []);
 
-
-
-
+        console.log(userData)
+        if (!userData) return null
 
     return(
 
@@ -58,8 +53,8 @@ export default function UserProfile(props){
 
         <div className="col-md-8">
             <div className="card-body">
-            <h5 className="card-title">{state.profile.username + "   "}<span className="badge bg-secondary">{state.profile.roletag}</span></h5>
-            <p className="card-text">{state.profile.biotext}</p>
+            <h5 className="card-title">{userData.username + "   "}<span className="badge bg-secondary">{userData.roletag}</span></h5>
+            <p className="card-text">{userData.biotext}</p>
 
             
                 <p>
@@ -69,11 +64,11 @@ export default function UserProfile(props){
                 </p>
                     <div className="collapse" id="collapseExample">
                     <div className="card card-body">
-                        {state.profile.skills}
+                        {userData.skills}
                     </div>
                 </div>
 
-            <p className="card-text"><small className="text-muted">{state.profile.location}</small></p>
+            <p className="card-text"><small className="text-muted">{userData.location}</small></p>
             </div>
         </div>
     </div>
