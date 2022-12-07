@@ -55,6 +55,33 @@ export default function Navbar(props) {
                         </li>
                     )}
 
+{/* MAIN PAGE filters all posts to show those only in the user's location */}
+                    {state.currentUser && (
+                        <li className="nav-item">
+                        <Link to="/main" className="nav-link">
+                            Main Page
+                        </Link>
+                        </li>
+                    )}
+
+{/* EXCHANGE PAGE filters all posts by those with exchange tags */}
+                    {state.currentUser && (
+                        <li className="nav-item">
+                        <Link to="/exchange" className="nav-link">
+                            Exchange Page
+                        </Link>
+                        </li>
+                    )}
+
+{/* SOCIAL PAGE filters all posts by those WITHOUT exchange tags */}
+                    {state.currentUser && (
+                        <li className="nav-item">
+                        <Link to="/exchange" className="nav-link">
+                            Social Page
+                        </Link>
+                        </li>
+                    )}
+
                     </ul>
 
                     {state.currentUser && (
@@ -67,7 +94,7 @@ export default function Navbar(props) {
 
                     {!state.currentUser && (
                     <div className="d-flex">
-                        <Link to="/login" id="button" className="btn btn-primary" type="submit">
+                        <Link to="/login" id="button" className="btn btn-primary mb-1" type="submit">
                             login 
                         </Link>
                     </div>
@@ -77,7 +104,7 @@ export default function Navbar(props) {
 
                     {!state.currentUser && (
                     <div className="d-flex">
-                        <Link to="/register" id="button" className="btn btn-primary" type="submit">
+                        <Link to="/register" id="button" className="btn btn-primary mb-1" type="submit">
                             sign up
                         </Link>
                     </div>

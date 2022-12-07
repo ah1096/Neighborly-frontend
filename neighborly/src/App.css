@@ -18,4 +18,15 @@ i {
     font-size: 20px;
 }
 
+#sidenavitem {
+    background-color: #FFFFFF;
+}
+#sidenavitem:hover {
+    background-color: lightgrey;
+}
+
+#postbutton {
+    background-color: #6BA850;
+}
+
 
