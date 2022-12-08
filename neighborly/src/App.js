@@ -2,9 +2,10 @@ import './App.css';
 import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
 // import SideNav from './components/SideNav.js';
-import Post from './components/Post.js';
 import { Outlet } from "react-router-dom";
 import { GlobalProvider } from './context/GlobalState.js';
+
+import MainPage from './components/MainPage.js'
 
 function App() {
 
@@ -12,8 +13,8 @@ function App() {
     <GlobalProvider>
       <Navbar />
       <Outlet />
-      <Post />
       <Footer />
+      <MainPage />
     </GlobalProvider>
   );
 }

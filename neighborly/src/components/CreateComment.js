@@ -7,6 +7,10 @@ const image = {
 };
 
 export default function CreateComment(){
+
+// put POST request stuff HERE; model off of CreateAccount
+
+
     return(
 
     <div className="card mb-3">
