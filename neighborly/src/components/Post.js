@@ -36,10 +36,11 @@ export default function Post(){
 
 {/* DROPDOWN - only available to current user on OWN posts; 
 onclick = EDIT and DELETE options become available */}
+
             <div className="col-1">
                 <div class="dropdown">
 
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-three-dots"></i>
                     </button>
 
