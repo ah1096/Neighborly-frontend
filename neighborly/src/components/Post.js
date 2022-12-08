@@ -29,10 +29,36 @@ export default function Post(){
                             ></img>
             </div>
 
-            <div className="col-11">
+            <div className="col-10">
                 <h6 id="postauthor" className="card-title">Username <span id="extag" className="badge bg-secondary">extag</span></h6>
                 <p id="wherewhen" className="text-muted">location | time posted</p>
             </div>
+
+{/* DROPDOWN - only available to current user on OWN posts; 
+onclick = EDIT and DELETE options become available */}
+            <div className="col-1">
+                <div class="dropdown">
+
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots"></i>
+                    </button>
+
+                    <ul class="dropdown-menu">
+                        <li >
+                            <a id="editpost" class="dropdown-item d-inline" href="#">Edit post <i id="pencilicon"class="bi bi-pencil d-inline ms-5"></i></a>
+                        </li>
+
+                        <li >
+                            <a id="deletepost" class="dropdown-item d-inline" href="#">Delete post <i id="trashicon" class="bi bi-trash d-inline ms-4"></i></a>
+                            {/* add onclick 'Are you sure?' popup */}
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+
         </div>
 
         <p id="postcontent" className="card-text">POST CONTENT; Ivory stalk pallid beneficent have lost in prayer lonely 

@@ -29,4 +29,12 @@ i {
     background-color: #6BA850;
 }
 
+#trashicon{
+    padding-left: 6px;
+}
+
+#deletepost:hover {
+    color: red;
+}
+
 
