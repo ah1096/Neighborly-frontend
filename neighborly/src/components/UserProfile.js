@@ -42,7 +42,7 @@ export default function UserProfile(props){
         <div className="col-md-4">
         <img className="d-block mx-lg-auto img-fluid rounded-circle m-3" 
                         loading="lazy" 
-                        alt="a generic neighborhood" 
+                        alt="default user icon" 
                         src= {image.imageUrl}
                         style={{
                             width: image.imageWidth,
@@ -62,7 +62,7 @@ export default function UserProfile(props){
                         skills
                     </button>
                 </p>
-                    <div className="collapse" id="collapseExample">
+                <div className="collapse" id="collapseExample">
                     <div className="card card-body">
                         {userData.skills}
                     </div>
