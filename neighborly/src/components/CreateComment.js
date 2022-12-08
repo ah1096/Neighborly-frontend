@@ -9,12 +9,12 @@ const image = {
 export default function CreateComment(){
     return(
 
-    <div class="card mb-3">
-        <div class="card-body">
+    <div className="card mb-3">
+        <div className="card-body">
 
-            <div class="row">
+            <div className="row">
                 
-                <div class="col-1">
+                <div className="col-1">
                     <img className="d-block mx-lg-auto img-fluid rounded-circle" 
                         loading="lazy" 
                         alt="default user icon" 
@@ -26,11 +26,11 @@ export default function CreateComment(){
                     ></img>
                 </div>
 
-                <div class="col-11">
+                <div className="col-11">
                         <form> 
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Write a comment..." aria-describedby="button-addon2"/>
-                                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                            <div className="input-group">
+                                <input type="text" className="form-control" placeholder="Write a comment..." aria-describedby="button-addon2"/>
+                                <button className="btn btn-outline-secondary" type="button" id="button-addon2">
                                 <i className="bi bi-plus-lg d-inline"></i>
                                 </button>
                             </div>

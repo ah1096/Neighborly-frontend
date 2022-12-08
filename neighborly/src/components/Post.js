@@ -14,10 +14,10 @@ export default function Post(){
     return(
 
 // USER POST
-<div class="card w-75">
-    <div class="card-body">
-        <div class="row">
-            <div class="col">
+<div className="card w-75">
+    <div className="card-body">
+        <div className="row">
+            <div className="col">
                 <img className="col-1 d-inline mx-lg-auto img-fluid rounded-circle" 
                                 loading="lazy" 
                                 alt="default user icon" 
@@ -29,13 +29,13 @@ export default function Post(){
                             ></img>
             </div>
 
-            <div class="col-11">
-                <h6 id="postauthor" class="card-title">Username <span id="extag" className="badge bg-secondary">extag</span></h6>
-                <p id="wherewhen" class="text-muted">location | time posted</p>
+            <div className="col-11">
+                <h6 id="postauthor" className="card-title">Username <span id="extag" className="badge bg-secondary">extag</span></h6>
+                <p id="wherewhen" className="text-muted">location | time posted</p>
             </div>
         </div>
 
-        <p id="postcontent" class="card-text">POST CONTENT; Ivory stalk pallid beneficent have lost in prayer lonely 
+        <p id="postcontent" className="card-text">POST CONTENT; Ivory stalk pallid beneficent have lost in prayer lonely 
         shriek repentant eidolon. Death beyond such smothered reverie outpouring. Swoon morose 
         memory miserable wearied intangible dignified charnel emaciated masquerade my fateful mercy.
         Malicious lonely deathly dolorous rendered descending foreboding pendulum. Dreary etiolated 

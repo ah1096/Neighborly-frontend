@@ -11,11 +11,11 @@ const image = {
 export default function Comment(){
     return(
 
-        <div class="card mb-3">
-            <div class="card-body">
+        <div className="card mb-3">
+            <div className="card-body">
 
-                <div class="row">
-                    <div class="col">
+                <div className="row">
+                    <div className="col">
                         <img className="col-1 d-inline mx-lg-auto img-fluid rounded-circle" 
                             loading="lazy" 
                             alt="default user icon" 
@@ -27,9 +27,9 @@ export default function Comment(){
                         ></img>
                     </div>
 
-                    <div class="col-11">
-                        <h6 id="postauthor" class="card-title">Username </h6>
-                        <p id="wherewhen" class="text-muted">time posted</p>
+                    <div className="col-11">
+                        <h6 id="postauthor" className="card-title">Username </h6>
+                        <p id="wherewhen" className="text-muted">time posted</p>
                     </div>
                 </div>
 
