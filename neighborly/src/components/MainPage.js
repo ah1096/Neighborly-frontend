@@ -1,11 +1,15 @@
-import Post from './Post.js';
+import Posts from './Posts.js';
 import CreatePost from './CreatePost.js';
 
 export default function MainPage(){
     return(
         <span>
-        <CreatePost />
-        <Post />
+            <div className="row justify-content-center">
+                <div className="col-6">
+                    <CreatePost />
+                    <Posts />
+                </div>
+            </div>
         </span>
     )
 }
