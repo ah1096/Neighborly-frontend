@@ -6,7 +6,6 @@ export default function SideNav(){
 <div className="ms-3 row pe-5 text-align-center">
     <div id="sidenav" className="d-flex w-25 col-12 flex-column flex-shrink-0 p-3 mt-5">
 
-        
         <ul className="nav nav-pills flex-column mb-auto">
 
         <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
