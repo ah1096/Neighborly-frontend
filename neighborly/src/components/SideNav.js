@@ -3,7 +3,7 @@
 export default function SideNav(){
     return(
 
-<div className="row pe-5 text-align-center">
+<div className="ms-3 row pe-5 text-align-center">
     <div id="sidenav" className="d-flex w-25 col-12 flex-column flex-shrink-0 p-3 mt-5">
 
         
