@@ -1,3 +1,7 @@
+import { useGlobalState } from "../context/GlobalState";
+import request from "../services/api.request";
+import React, { useState, useEffect } from "react";
+
 import defaulticon from './images/defaulticon.png';
 const image = {
     name: 'defaulticon',
@@ -8,14 +12,20 @@ const image = {
 
 
 export default function Posts(){
+
     return(
 
-// USER POST
-<div className="card">
-<div className="card-body">
-    <div className="row">
-        <div className="col">
-            <img className="col-2 d-inline mx-lg-auto img-fluid rounded-circle" 
+<div>
+
+{/* CREATE POST */}
+    <div>
+        <div className="card mb-3">
+            <div className="card-body">
+
+                <div className="row">
+                    
+                    <div className="col-2">
+                        <img className="d-block mx-lg-auto img-fluid rounded-circle" 
                             loading="lazy" 
                             alt="default user icon" 
                             src= {image.imageUrl}
@@ -24,139 +34,40 @@ export default function Posts(){
                                 height: image.imageHeight
                                 }}
                         ></img>
-        </div>
+                    </div>
 
-        <div className="col-8">
-            <h6 id="postauthor" className="card-title">
-                    Username
-                <span id="extag" className="badge bg-secondary ms-3">
-                    extag
-                </span>
-            </h6>
-
-            <p id="wherewhen" className="text-muted">
-                location | time posted
-            </p>
-        </div>
-
-{/* DROPDOWN - only available to current user on OWN posts; 
-onclick = EDIT and DELETE options become available */}
-
-        <div className="col-2">
-            <div className="dropdown">
-
-                <button className="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i className="bi bi-three-dots"></i>
-                </button>
-
-                <ul className="dropdown-menu">
-                    <li >
-                        <a id="editpost" className="dropdown-item d-inline" href="#">
-                            Edit post 
-                            <i id="pencilicon"className="bi bi-pencil d-inline ms-5"></i>
-                        </a>
-                    </li>
-
-                    <li >
-                        <a id="deletepost" className="dropdown-item d-inline" href="#">
-                            Delete post 
-                            <i id="trashicon" className="bi bi-trash d-inline ms-4"></i>
-                        </a>
-                        {/* add onclick 'Are you sure?' popup */}
-                    </li>
-                </ul>
-
+                    <div className="col-10">
+                            <form> 
+                                <div className="input-group">
+                                    <input type="text" className="form-control" placeholder="Write a post..." data-bs-toggle="modal" data-bs-target="#createpostmodal" />
+                                </div>
+                            </form>
+                    </div>
+                </div>
             </div>
         </div>
 
 
 
-    </div>
-
-    <p id="postcontent" className="card-text">
-        POST CONTENT
-    </p>
+    {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createpostmodal">
+        Launch demo modal
+    </button> */}
 
 
-{/* COMMENT DROPDOWN */}
-    <p>
-        <button className="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            view # comments
-        </button>
-    </p>
+        <div className="modal fade" id="createpostmodal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
 
-        <div className="collapse" id="collapseExample">
-            <div className="card card-body">
-                    
+                        <h1 className="col-11 modal-title fs-5" id="exampleModalLabel">
+                            Create post
+                        </h1>
 
-                {/* USER COMMENTS */}
-
-                    <div className="card mb-3">
-                        <div className="card-body">
-
-                            <div className="row">
-                                <div className="col">
-                                    <img className="col-2 d-inline mx-lg-auto img-fluid rounded-circle" 
-                                        loading="lazy" 
-                                        alt="default user icon" 
-                                        src= {image.imageUrl}
-                                        style={{
-                                            width: image.imageWidth,
-                                            height: image.imageHeight
-                                            }}
-                                    ></img>
-                                </div>
-
-                                <div className="col-8">
-                                    <h6 id="postauthor" className="card-title">
-                                        Username 
-                                    </h6>
-                                    <p id="wherewhen" className="text-muted">
-                                        time posted
-                                    </p>
-                                </div>
-
-                            <div className="col-2">
-                                <div className="dropdown">
-
-                                    <button className="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i className="bi bi-three-dots"></i>
-                                    </button>
-
-                                    <ul className="dropdown-menu">
-                                        <li >
-                                            <a id="editcomment" className="dropdown-item d-inline" href="#">
-                                                Edit comment 
-                                                <i id="pencilicon"className="bi bi-pencil d-inline ms-5"></i>
-                                            </a>
-                                        </li>
-
-                                        <li >
-                                            <a id="deletecomment" className="dropdown-item d-inline" href="#">
-                                                Delete comment 
-                                                <i id="trashicon" className="bi bi-trash d-inline ms-4"></i>
-                                            </a>
-                                            {/* add onclick 'Are you sure?' popup */}
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-
-                            </div>
-                            
-                            <p>
-                                COMMENT CONTENT
-                            </p>
-                        
-                        </div>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-
-                {/* CREATE COMMENT FIELD */}
-
-                    <div className="card mb-3">
-                        <div className="card-body">
+                    <form>
+                        <div className="modal-body">
 
                             <div className="row">
                                 
@@ -173,33 +84,228 @@ onclick = EDIT and DELETE options become available */}
                                 </div>
 
                                 <div className="col-10">
-                                        <form> 
                                             <div className="input-group">
-                                                <input type="text" className="form-control" placeholder="Write a comment..." aria-describedby="button-addon2"/>
-                                                <button id="createcommentbtn" className="btn btn-outline-secondary" type="button">
-                                                <i className="bi bi-plus-lg d-inline"></i>
-                                                </button>
+                                                <input type="text" className="form-control" placeholder="Write a post..." aria-describedby="button-addon2"/>
                                             </div>
-                                        </form>
                                 </div>
 
                             </div>
 
                         </div>
-                    </div>                            
+
+                        <div className="modal-footer">
+
+                            <div className="input-group">
+                                <select className="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                    <option value>Exchange type...</option>
+                                        <option value="1">None</option>
+                                        <option value="2">Trade</option>
+                                        <option value="3">Gig</option>
+                                        <option value="4">Favor</option>
+                                </select>
+
+                                <button id="createpostbtn" className="btn btn-outline-secondary" type="submit">
+                                    <i className="bi bi-plus-lg"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{/* // USER POST */}
+    <div className="card">
+        <div className="card-body">
+            <div className="row">
+                <div className="col">
+                    <img className="col-2 d-inline mx-lg-auto img-fluid rounded-circle" 
+                                    loading="lazy" 
+                                    alt="default user icon" 
+                                    src= {image.imageUrl}
+                                    style={{
+                                        width: image.imageWidth,
+                                        height: image.imageHeight
+                                        }}
+                                ></img>
+                </div>
+
+                <div className="col-8">
+                    <h6 id="postauthor" className="card-title">
+                            Username
+                        <span id="extag" className="badge bg-secondary ms-3">
+                            extag
+                        </span>
+                    </h6>
+
+                    <p id="wherewhen" className="text-muted">
+                        location | time posted
+                    </p>
+                </div>
+
+        {/* EDIT/DELETE POST DROPDOWN - only available to current user on OWN posts; 
+        onclick = EDIT and DELETE options become available */}
+
+                <div className="col-2">
+                    <div className="dropdown">
+
+                        <button className="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i className="bi bi-three-dots"></i>
+                        </button>
+
+                        <ul className="dropdown-menu">
+                            <li >
+                                <a id="editpost" className="dropdown-item d-inline" href="#">
+                                    Edit post 
+                                    <i id="pencilicon"className="bi bi-pencil d-inline ms-5"></i>
+                                </a>
+                            </li>
+
+                            <li >
+                                <a id="deletepost" className="dropdown-item d-inline" href="#">
+                                    Delete post 
+                                    <i id="trashicon" className="bi bi-trash d-inline ms-4"></i>
+                                </a>
+                                {/* add onclick 'Are you sure?' popup */}
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
 
 
 
             </div>
+
+            <p id="postcontent" className="card-text">
+                POST CONTENT
+            </p>
+
+
+        {/* COMMENT DROPDOWN */}
+            <p>
+                <button className="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    view # comments
+                </button>
+            </p>
+
+                <div className="collapse" id="collapseExample">
+                    <div className="card card-body">
+                            
+
+                        {/* USER COMMENT */}
+                            <div className="card mb-3">
+                                <div className="card-body">
+
+                                    <div className="row">
+                                        <div className="col">
+                                            <img className="col-2 d-inline mx-lg-auto img-fluid rounded-circle" 
+                                                loading="lazy" 
+                                                alt="default user icon" 
+                                                src= {image.imageUrl}
+                                                style={{
+                                                    width: image.imageWidth,
+                                                    height: image.imageHeight
+                                                    }}
+                                            ></img>
+                                        </div>
+
+                                        <div className="col-8">
+                                            <h6 id="postauthor" className="card-title">
+                                                Username 
+                                            </h6>
+                                            <p id="wherewhen" className="text-muted">
+                                                time posted
+                                            </p>
+                                        </div>
+                                
+                                {/* EDIT/DELETE DROPDOWN */}
+                                    <div className="col-2">
+                                        <div className="dropdown">
+
+                                            <button className="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i className="bi bi-three-dots"></i>
+                                            </button>
+
+                                            <ul className="dropdown-menu">
+                                                <li >
+                                                    <a id="editcomment" className="dropdown-item d-inline" href="#">
+                                                        Edit comment 
+                                                        <i id="pencilicon"className="bi bi-pencil d-inline ms-5"></i>
+                                                    </a>
+                                                </li>
+
+                                                <li >
+                                                    <a id="deletecomment" className="dropdown-item d-inline" href="#">
+                                                        Delete comment 
+                                                        <i id="trashicon" className="bi bi-trash d-inline ms-4"></i>
+                                                    </a>
+                                                    {/* add onclick 'Are you sure?' popup */}
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                    
+                                    <p>
+                                        COMMENT CONTENT
+                                    </p>
+                                
+                                </div>
+                            </div>
+
+
+                        {/* CREATE COMMENT FIELD */}
+
+                            <div className="card mb-3">
+                                <div className="card-body">
+
+                                    <div className="row">
+                                        
+                                        <div className="col-2">
+                                            <img className="d-block mx-lg-auto img-fluid rounded-circle" 
+                                                loading="lazy" 
+                                                alt="default user icon" 
+                                                src= {image.imageUrl}
+                                                style={{
+                                                    width: image.imageWidth,
+                                                    height: image.imageHeight
+                                                    }}
+                                            ></img>
+                                        </div>
+
+                                        <div className="col-10">
+                                                <form> 
+                                                    <div className="input-group">
+                                                        <input type="text" className="form-control" placeholder="Write a comment..." aria-describedby="button-addon2"/>
+                                                        <button id="createcommentbtn" className="btn btn-outline-secondary" type="button">
+                                                        <i className="bi bi-plus-lg d-inline"></i>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>                            
+
+
+
+                    </div>
+                </div>
         </div>
+    </div>
+
+
+
+
 </div>
-</div>
-
-
-
-
-
-
-
     )
 }
