@@ -33,19 +33,19 @@ export default function Comment(){
                     </div>
 
                 <div className="col-1">
-                    <div class="dropdown">
+                    <div className="dropdown">
 
-                        <button class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-three-dots"></i>
+                        <button className="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i className="bi bi-three-dots"></i>
                         </button>
 
-                        <ul class="dropdown-menu">
+                        <ul className="dropdown-menu">
                             <li >
-                                <a id="editcomment" class="dropdown-item d-inline" href="#">Edit comment <i id="pencilicon"class="bi bi-pencil d-inline ms-5"></i></a>
+                                <a id="editcomment" className="dropdown-item d-inline" href="#">Edit comment <i id="pencilicon"className="bi bi-pencil d-inline ms-5"></i></a>
                             </li>
 
                             <li >
-                                <a id="deletecomment" class="dropdown-item d-inline" href="#">Delete comment <i id="trashicon" class="bi bi-trash d-inline ms-4"></i></a>
+                                <a id="deletecomment" className="dropdown-item d-inline" href="#">Delete comment <i id="trashicon" className="bi bi-trash d-inline ms-4"></i></a>
                                 {/* add onclick 'Are you sure?' popup */}
                             </li>
                         </ul>

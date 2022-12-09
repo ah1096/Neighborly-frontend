@@ -39,25 +39,25 @@ export default function CreatePost(){
 
 
 
-{/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createpostmodal">
+{/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createpostmodal">
     Launch demo modal
 </button> */}
 
 
-    <div class="modal fade" id="createpostmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
+    <div className="modal fade" id="createpostmodal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+            <div className="modal-content">
+                <div className="modal-header">
 
-                    <h1 class="col-11 modal-title fs-5" id="exampleModalLabel">
+                    <h1 className="col-11 modal-title fs-5" id="exampleModalLabel">
                         Create post
                     </h1>
 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <form>
-                    <div class="modal-body">
+                    <div className="modal-body">
 
                         <div className="row">
                             
@@ -83,18 +83,18 @@ export default function CreatePost(){
 
                     </div>
 
-                    <div class="modal-footer">
+                    <div className="modal-footer">
 
-                        <div class="input-group">
-                            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                <option selected>Exchange type...</option>
+                        <div className="input-group">
+                            <select className="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                <option value>Exchange type...</option>
                                     <option value="1">None</option>
                                     <option value="2">Trade</option>
                                     <option value="3">Gig</option>
                                     <option value="4">Favor</option>
                             </select>
 
-                            <button id="createpostbtn" class="btn btn-outline-secondary" type="submit">
+                            <button id="createpostbtn" className="btn btn-outline-secondary" type="submit">
                                 <i className="bi bi-plus-lg"></i>
                             </button>
                         </div>

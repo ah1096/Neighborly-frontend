@@ -14,7 +14,6 @@ function App() {
       <Navbar />
       <Outlet />
       <Footer />
-      <MainPage />
     </GlobalProvider>
   );
 }
