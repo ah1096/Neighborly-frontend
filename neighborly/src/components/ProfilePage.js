@@ -4,10 +4,18 @@ import SideNav from './SideNav.js';
 
 export default function ProfilePage(){
     return(
-        <div>
-            <SideNav/>
-            <GetUser/>
-        </div>
+        <span>
+            <div className="row">
+                <div className="col-3">
+                    <SideNav />
+                </div>
+
+                <div className="col-6">
+                    <GetUser />
+                </div>
+                
+            </div>
+        </span>
     )
 
 
