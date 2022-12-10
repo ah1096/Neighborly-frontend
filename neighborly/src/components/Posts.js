@@ -62,7 +62,7 @@ export default function Posts(){
                 params: {
                     // author__id: state.currentUser.user_id,
                     // comment: commentData,
-                    author: state.currentUser.user_id,
+                    comment_author: state.currentUser.user_id,
                     // post: post.id,
 
                 },
@@ -133,12 +133,6 @@ return(
                 </div>
             </div>
         </div>
-
-
-
-    {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createpostmodal">
-        Launch demo modal
-    </button> */}
 
 
         <div className="modal fade" id="createpostmodal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -227,7 +221,7 @@ return(
                         <h6 id="postauthor" className="card-title">
                                 {post.author}
                             <span id="extag" className="badge bg-secondary ms-3">
-                                extag
+                                {post.exTag}
                             </span>
                         </h6>
 
@@ -271,14 +265,10 @@ return(
                 </div>
 
                 <p id="postcontent" className="card-text">
-                    {post.body}
+                    {post.content}
                 </p>
 
-                { post.comments.map((c) => (
-                                    <div key={c.id}className="row">
-                                        {c.comment} - {c.commented_by}
-                                    </div>
-                                ))}
+                
 
             {/* COMMENT DROPDOWN */}
                 <p>
@@ -291,6 +281,9 @@ return(
                         <div className="card card-body">
                                 
 
+                        { post.comments.map((c) => (
+                            <div key={c.id}>
+                            
                             {/* USER COMMENT */}
                                 <div className="card mb-3">
                                     <div className="card-body">
@@ -310,10 +303,10 @@ return(
 
                                             <div className="col-8">
                                                 <h6 id="postauthor" className="card-title">
-                                                    Username 
+                                                    {c.author}
                                                 </h6>
-                                                <p id="wherewhen" className="text-muted">
-                                                    time posted
+                                                <p id="timeposted" className="text-muted">
+                                                    {c.created_at}
                                                 </p>
                                             </div>
                                     
@@ -348,11 +341,16 @@ return(
                                         </div>
                                         
                                         <p>
-                                            COMMENT CONTENT
+                                            {c.content}
                                         </p>
                                     
                                     </div>
                                 </div>
+                            </div>
+                        ))}
+
+
+
 
 
                             {/* CREATE COMMENT FIELD */}
@@ -378,7 +376,7 @@ return(
                                                     <form> 
                                                         <div className="input-group">
                                                             <input type="text" onChange={(e) => setComments(e.target.value)} className="form-control" placeholder="Write a comment..." aria-describedby="button-addon2"/>
-                                                            <button id="createcommentbtn" onClick={() => postComment(post.id)} className="btn btn-outline-secondary" type="button">
+                                                            <button id="createcommentbtn" onClick={() => createComment(post.id)} className="btn btn-outline-secondary" type="button">
                                                             <i className="bi bi-plus-lg d-inline"></i>
                                                             </button>
                                                         </div>
@@ -399,12 +397,12 @@ return(
     </div>
 ))}
 
-{/* {commentData.map((comment) => (
+{commentData.map((comment) => (
                 <div key={comment.id}>
                     {comment.comment}
-                    {comment.comment_author}
-                </div> */}
-            {/* ))} */}
+                    {comment.author}
+                </div>
+))}
 
 
 

@@ -10,7 +10,7 @@ export default function SideNav(){
 
         <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
             <a href="#" className="row nav-link link-dark" >
-                <i class="col-4 bi bi-house-door-fill me-3"></i>
+                <i className="col-4 bi bi-house-door-fill me-3"></i>
                 <span id="sidenavtext" className="col-8">
                 Home
                 </span>
@@ -19,7 +19,7 @@ export default function SideNav(){
 
         <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
             <a href="#" className="row nav-link link-dark">
-                <i class="col-4 bi bi-arrow-left-right me-3"></i>
+                <i className="col-4 bi bi-arrow-left-right me-3"></i>
                 <span id="sidenavtext" className="col-8">
                     Exchange
                 </span>
