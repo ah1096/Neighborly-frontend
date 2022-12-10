@@ -55,14 +55,14 @@ export default function Navbar(props) {
                         </li>
                     )}
 
-{/* MAIN PAGE filters all posts to show those only in the user's location */}
+{/* MAIN PAGE filters all posts to show those only in the user's location
                     {state.currentUser && (
                         <li className="nav-item">
                         <Link to="/main" className="nav-link">
                             Main Page
                         </Link>
                         </li>
-                    )}
+                    )} */}
 
 {/* EXCHANGE PAGE filters all posts by those with exchange tags */}
                     {state.currentUser && (

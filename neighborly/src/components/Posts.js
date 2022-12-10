@@ -19,7 +19,9 @@ export default function Posts(){
     const [postContent, setPostContent] = useState('');
     const [commentData, setCommentData] = useState([])
     const [comments, setComments] = useState('')
+    const [tag, setTag] = useState("")
 
+    
     async function getPosts() {
         let options = {
             url: "posts/",
@@ -38,12 +40,13 @@ export default function Posts(){
     }, []);
 
 
-    async function createPost() {
+    async function createPost(e) {
+        e.preventDefault()
         let options = {
-            url: "post/",
+            url: "/posts/",
             method: "POST",
             data: {
-                body: postContent,
+                content: postContent,
                 author: state.currentUser.user_id,
             },
         };
@@ -54,17 +57,33 @@ export default function Posts(){
         ])
     }
 
+
+
+
+    // async function editPost() {
+    //     let options = {
+    //         url: "post/",
+    //         method: "PATCH",
+    //         data: {
+    //             content: postContent,
+    //             author: state.currentUser.user_id,
+    //         },
+    //     };
+    //     let resp = await request(options);
+    //     setPostData([
+    //         ...postData,
+    //         resp.data
+    //     ])
+    // }
+
+
     useEffect(() => {
         async function getComments() {
             let options = {
                 url: "comments/",
                 method: "GET",
                 params: {
-                    // author__id: state.currentUser.user_id,
-                    // comment: commentData,
-                    comment_author: state.currentUser.user_id,
-                    // post: post.id,
-
+                    author: state.currentUser.user_id,
                 },
             };
             let resp = await request(options);
@@ -75,7 +94,7 @@ export default function Posts(){
 
 
 
-    async function createComment(postId) {
+    async function createComment(postid) {
 
         let options = {
             url: 'comments/',
@@ -83,7 +102,7 @@ export default function Posts(){
             data: {
                 comment: comments,
                 author: state.currentUser.user_id,
-                post: postId,
+                post: postid,
             }
         }
         console.log(options)
@@ -106,7 +125,7 @@ return(
 
 {/* CREATE POST */}
     <div>
-        <div className="card mb-3">
+        <div className="card">
             <div className="card-body">
 
                 <div className="row">
@@ -176,9 +195,10 @@ return(
 
                         <div className="modal-footer">
 
+{/* peep Elijah's repo for emoji select; ask Estus how he did his select field; have a UserRef */}
                             <div className="input-group">
                                 <select className="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                    <option value>Exchange type...</option>
+                                    <option value="0">Exchange type...</option>
                                         <option value="1">None</option>
                                         <option value="2">Trade</option>
                                         <option value="3">Gig</option>
@@ -197,6 +217,10 @@ return(
             </div>
         </div>
     </div>
+
+{/* EDIT POST */}
+
+    {/* add edit post modal to popup on click of Edit button */}
 
 
 {/* // USER POST */}
@@ -242,7 +266,7 @@ return(
 
                             <ul className="dropdown-menu">
                                 <li >
-                                    <a id="editpost" className="dropdown-item d-inline" href="#">
+                                    <a id="editpost" className="dropdown-item d-inline" data-bs-toggle="modal" data-bs-target="#editpostmodal" href="#">
                                         Edit post 
                                         <i id="pencilicon"className="bi bi-pencil d-inline ms-5"></i>
                                     </a>

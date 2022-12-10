@@ -1,6 +1,18 @@
+import { Link } from "react-router-dom";
+import { useGlobalState } from "../context/GlobalState";
+import { useNavigate } from "react-router-dom"
+import AuthService from "../services/auth.service"
+
 
 
 export default function SideNav(){
+
+    const [ state, dispatch ] = useGlobalState();
+
+    let navigate = useNavigate();
+
+
+
     return(
 
 <div className="ms-3 row pe-5 text-align-center">
@@ -8,14 +20,23 @@ export default function SideNav(){
 
         <ul className="nav nav-pills flex-column mb-auto">
 
-        <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
-            <a href="#" className="row nav-link link-dark" >
+
+        {state.currentUser && (
+                        
+            <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+                <a href="#" className="row nav-link link-dark" >
+
+                <Link to="/main" className="nav-link">
                 <i className="col-4 bi bi-house-door-fill me-3"></i>
-                <span id="sidenavtext" className="col-8">
-                Home
-                </span>
-            </a>
-        </li>
+                    <span id="sidenavtext" className="col-8">
+                    Home
+                    </span>
+                </Link>
+
+                    
+                </a>
+            </li>
+                    )}
 
         <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
             <a href="#" className="row nav-link link-dark">
