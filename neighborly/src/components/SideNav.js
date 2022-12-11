@@ -24,7 +24,7 @@ export default function SideNav(){
         {state.currentUser && (
                         
             <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
-                <a href="#" className="row nav-link link-dark" >
+                {/* <a href="#" className="row nav-link link-dark" > */}
 
                 <Link to="/main" className="nav-link">
                 <i className="col-4 bi bi-house-door-fill me-3"></i>
@@ -34,7 +34,7 @@ export default function SideNav(){
                 </Link>
 
                     
-                </a>
+                {/* </a> */}
             </li>
                     )}
 

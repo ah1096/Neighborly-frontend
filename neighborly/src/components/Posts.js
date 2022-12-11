@@ -17,10 +17,26 @@ export default function Posts(){
     const [state, dispatch] = useGlobalState();
     const [postData, setPostData] = useState([]);
     const [postContent, setPostContent] = useState('');
-    const [commentData, setCommentData] = useState([])
-    const [comments, setComments] = useState('')
-    const [tag, setTag] = useState("")
+    const [commentData, setCommentData] = useState([]);
+    const [comments, setComments] = useState('');
 
+    const [tag, setTag] = useState([]);
+
+    async function getTag(e) {
+        let options = { 
+            url: "exchanges/", 
+            method: "GET" ,
+        }
+        let resp = await request(options);
+        setTag([
+            ...tag,
+            resp.data
+        ])
+    }
+
+    useEffect(() => {
+        getTag();
+    }, []);
     
     async function getPosts() {
         let options = {
@@ -32,7 +48,6 @@ export default function Posts(){
         };
         let resp = await request(options);
         setPostData(resp.data);
-        console.log(postData)
     }
 
     useEffect(() => {
@@ -43,7 +58,7 @@ export default function Posts(){
     async function createPost(e) {
         e.preventDefault()
         let options = {
-            url: "/posts/",
+            url: "posts/",
             method: "POST",
             data: {
                 content: postContent,
@@ -195,14 +210,12 @@ return(
 
                         <div className="modal-footer">
 
-{/* peep Elijah's repo for emoji select; ask Estus how he did his select field; have a UserRef */}
+
                             <div className="input-group">
                                 <select className="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                                    <option value="0">Exchange type...</option>
-                                        <option value="1">None</option>
-                                        <option value="2">Trade</option>
-                                        <option value="3">Gig</option>
-                                        <option value="4">Favor</option>
+
+                                {tag.map((tag) => <option key={`${tag.id}${tag.exchange_tag}`} value={tag.id}>{`${tag.exchange_tag}`}</option>)}
+
                                 </select>
 
                                 <button id="createpostbtn" onClick={createPost} className="btn btn-outline-secondary" type="submit">
