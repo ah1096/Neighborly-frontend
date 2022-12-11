@@ -25,35 +25,36 @@ export default function SideNav(){
                         
             <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
                 {/* <a href="#" className="row nav-link link-dark" > */}
-
                 <Link to="/main" className="nav-link">
                 <i className="col-4 bi bi-house-door-fill me-3"></i>
                     <span id="sidenavtext" className="col-8">
-                    Home
+                        Home
                     </span>
                 </Link>
-
-                    
                 {/* </a> */}
             </li>
                     )}
 
         <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
-            <a href="#" className="row nav-link link-dark">
-                <i className="col-4 bi bi-arrow-left-right me-3"></i>
-                <span id="sidenavtext" className="col-8">
-                    Exchange
-                </span>
-            </a>
+            {/* <a href="#" className="row nav-link link-dark"> */}
+                <Link to='/exchange' className="nav-link">
+                    <i className="col-4 bi bi-arrow-left-right me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Exchange
+                    </span>
+                </Link>
+            {/* </a> */}
         </li>
 
         <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
-            <a href="#" className="row nav-link link-dark">
-                <i className="col-4 bi bi-chat-left-heart me-3"></i>
-                <span id="sidenavtext" className="col-8">
-                    Social
-                </span>
-            </a>
+            {/* <a href="#" className="row nav-link link-dark"> */}
+                <Link to='/social' className="nav-link">
+                    <i className="col-4 bi bi-chat-left-heart me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Social
+                    </span>
+                </Link>
+            {/* </a> */}
         </li>
 
         <li id="postbutton" className="nav-item badge rounded-pill mb-3">

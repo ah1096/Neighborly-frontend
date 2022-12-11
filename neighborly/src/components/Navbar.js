@@ -65,22 +65,22 @@ export default function Navbar(props) {
                     )} */}
 
 {/* EXCHANGE PAGE filters all posts by those with exchange tags */}
-                    {state.currentUser && (
+                    {/* {state.currentUser && (
                         <li className="nav-item">
                         <Link to="/exchange" className="nav-link">
                             Exchange Page
                         </Link>
                         </li>
-                    )}
+                    )} */}
 
 {/* SOCIAL PAGE filters all posts by those WITHOUT exchange tags */}
-                    {state.currentUser && (
+                    {/* {state.currentUser && (
                         <li className="nav-item">
                         <Link to="/exchange" className="nav-link">
                             Social Page
                         </Link>
                         </li>
-                    )}
+                    )} */}
 
                     </ul>
 

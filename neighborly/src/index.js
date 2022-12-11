@@ -17,7 +17,9 @@ import Login from './components/Login.js';
 import UserProfile from './components/UserProfile.js';
 import CreateAccount from './components/CreateAccount';
 import About from './components/About.js';
-import MainPage from './components/MainPage.js'
+import MainPage from './components/MainPage.js';
+import ExchangePage from './components/ExchangePage.js';
+import SocialPage from './components/SocialPage.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -31,6 +33,8 @@ root.render(
           <Route path="register" element={<CreateAccount />} />
           <Route path="profile" element={<UserProfile />} />
           <Route path="main" element={<MainPage />} />
+          <Route path="exchange" element={<ExchangePage />} />
+          <Route path="social" element={<SocialPage />} />
         </Route>
       </Routes>
     </Router>
