@@ -19,6 +19,7 @@ export default function Posts(){
     const [postContent, setPostContent] = useState('');
     const [commentData, setCommentData] = useState([]);
     const [comments, setComments] = useState('');
+    const [selectedTag, setSelectedTag] = useState(null)
 
     const [tag, setTag] = useState([]);
 
@@ -28,15 +29,8 @@ export default function Posts(){
             method: "GET" ,
         }
         let resp = await request(options);
-        setTag([
-            ...tag,
-            resp.data
-        ])
+        setTag(resp.data)
     }
-
-    useEffect(() => {
-        getTag();
-    }, []);
     
     async function getPosts() {
         let options = {
@@ -50,9 +44,28 @@ export default function Posts(){
         setPostData(resp.data);
     }
 
+    async function getComments() {
+        let options = {
+            url: "comments/",
+            method: "GET",
+            params: {
+                author: state.currentUser.user_id,
+            },
+        };
+        let resp = await request(options);
+        setCommentData(resp.data);
+    }
+    
     useEffect(() => {
         getPosts();
+        getTag();
+        getComments();
     }, []);
+    
+
+    // useEffect(() => {
+    //     getPosts();
+    // }, []);
 
 
     async function createPost(e) {
@@ -63,8 +76,10 @@ export default function Posts(){
             data: {
                 content: postContent,
                 author: state.currentUser.user_id,
+                exTag: selectedTag,
             },
         };
+        console.log(selectedTag)
         let resp = await request(options);
         setPostData([
             ...postData,
@@ -92,20 +107,9 @@ export default function Posts(){
     // }
 
 
-    useEffect(() => {
-        async function getComments() {
-            let options = {
-                url: "comments/",
-                method: "GET",
-                params: {
-                    author: state.currentUser.user_id,
-                },
-            };
-            let resp = await request(options);
-            setCommentData(resp.data);
-        }
-        getComments();
-    }, []);
+    // useEffect(() => {
+
+    // }, []);
 
 
 
@@ -212,9 +216,14 @@ return(
 
 
                             <div className="input-group">
-                                <select className="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                <select
+                                    className="form-select"
+                                    id="inputGroupSelect04"
+                                    aria-label="Example select with button addon"
+                                    onChange={(e) => setSelectedTag(e.target.value)}
+                                >
 
-                                {tag.map((tag) => <option key={`${tag.id}${tag.exchange_tag}`} value={tag.id}>{`${tag.exchange_tag}`}</option>)}
+                                    {tag.map((tag) => <option key={`${tag.id}${tag.exchange_tag}`} value={tag.id}>{`${tag.exchange_tag}`}</option>)}
 
                                 </select>
 
