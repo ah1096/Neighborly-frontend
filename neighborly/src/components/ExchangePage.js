@@ -2,6 +2,7 @@ import { useGlobalState } from "../context/GlobalState";
 import request from "../services/api.request";
 import React, { useState, useEffect } from "react";
 import SideNav from './SideNav.js'
+import { Link } from "react-router-dom";
 
 import defaulticon from "./images/defaulticon.png";
 const image = {
@@ -120,6 +121,22 @@ async function createComment(postid) {
     (filteredTag) => filteredTag.exTag === filterState
   );
 console.log(postData)
+
+function removeFilterToggle() {
+    setFilterState(null);
+    var elem = document.getElementById('filtertoggles');
+    elem.parentNode.removeChild(elem);
+    return false;
+}
+
+function removeFilterToggleHome() {
+    setFilterState("")
+    var elem = document.getElementById('filtertoggles');
+    elem.parentNode.removeChild(elem);
+    return false;
+}
+
+
   /////////////////////////////////////////////RETURN//////////////////////////////////////////////////
   /////////////////////////////////////////////RETURN//////////////////////////////////////////////////
   /////////////////////////////////////////////RETURN//////////////////////////////////////////////////
@@ -129,7 +146,77 @@ if (filterState === "") {
   return (
     <div className="row">
                 <div className="col-3">
-                    <SideNav />
+
+
+{/* EDITING SIDENAV TO WORK AS FILTER BUTTONS */}
+                    
+
+<div className="ms-3 row pe-5 text-align-center">
+    <div id="sidenav" className="d-flex w-25 col-12 flex-column flex-shrink-0 p-3 mt-5">
+
+        <ul className="nav nav-pills flex-column mb-auto">
+
+
+        {state.currentUser && (
+                        
+            <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+                <a href="#" onClick={() => setFilterState("")} className="row nav-link" >
+                
+                <i className="col-4 bi bi-house-door-fill me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Home
+                    </span>
+
+                </a>
+            </li>
+                    )}
+
+<li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+                <Link to='/exchange' className="nav-link">
+                    <i className="col-4 bi bi-arrow-left-right me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Exchange
+                    </span>
+                </Link>
+
+        </li>
+
+        <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+
+
+            <a href="" onClick={() => setFilterState(null)} className="row nav-link">
+                    <i className="col-4 bi bi-chat-left-heart me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Social
+                    </span>
+            </a>
+        </li>
+
+        <li id="postbutton" className="nav-item badge rounded-pill mb-3">
+            <a href="" className="row nav-link link-dark">
+                <i className="col-4bi bi-plus-lg me-3"></i>
+                <span id="sidenavtext" className="col-8">
+                    Post
+                </span>
+            </a>
+        </li>
+
+        </ul>
+        
+    </div>
+</div>
+
+
+                    {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
+
+
+
+
+
+
+
+
+
                 </div>
 
     <div className="col-6">
@@ -253,12 +340,12 @@ if (filterState === "") {
       </div>
 
 
-<h1>buttons here</h1>
-<button className="btn btn-success" onClick={() => setFilterState("Trade")}>Trade</button>
-<button className="btn btn-success" onClick={() => setFilterState("")}>reset</button>
-<button className="btn btn-success" onClick={() => setFilterState("Gig")}>Gig</button>
-<button className="btn btn-success" onClick={() => setFilterState("Favor")}>Favor</button>
-<button className="btn btn-success" onClick={() => setFilterState(null)}>null</button>
+
+    <div id="filtertoggles" className="row">
+        <button className="col btn btn-success" onClick={() => setFilterState("Trade")}>Trade</button>
+        <button className="col btn btn-success" onClick={() => setFilterState("Gig")}>Gig</button>
+        <button className="col btn btn-success" onClick={() => setFilterState("Favor")}>Favor</button>
+    </div>
       {/* EDIT POST */}
 
       {/* add edit post modal to popup on click of Edit button */}
@@ -511,7 +598,67 @@ if (filterState !== "") {
 
         <div className="row">
                 <div className="col-3">
-                    <SideNav />
+                   
+                {/* EDITING SIDENAV TO WORK AS FILTER BUTTONS */}
+                    
+
+<div className="ms-3 row pe-5 text-align-center">
+    <div id="sidenav" className="d-flex w-25 col-12 flex-column flex-shrink-0 p-3 mt-5">
+
+        <ul className="nav nav-pills flex-column mb-auto">
+
+
+        {state.currentUser && (
+                        
+            <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+                <a href="#" onClick={() => setFilterState("")} className="row nav-link" >
+                
+                <i className="col-4 bi bi-house-door-fill me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Home
+                    </span>
+
+                </a>
+            </li>
+                    )}
+
+<li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+                <Link to='/exchange' className="nav-link">
+                    <i className="col-4 bi bi-arrow-left-right me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Exchange
+                    </span>
+                </Link>
+
+        </li>
+
+        <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+            <a href="#" onClick={() => removeFilterToggle()} className="row nav-link">
+            
+                    <i className="col-4 bi bi-chat-left-heart me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Social
+                    </span>
+               
+            </a>
+        </li>
+
+        <li id="postbutton" className="nav-item badge rounded-pill mb-3">
+            <a href="#" className="row nav-link link-dark">
+                <i className="col-4bi bi-plus-lg me-3"></i>
+                <span id="sidenavtext" className="col-8">
+                    Post
+                </span>
+            </a>
+        </li>
+
+        </ul>
+        
+    </div>
+</div>
+
+
+
                 </div>
 
 
@@ -635,12 +782,14 @@ if (filterState !== "") {
             </div>
           </div>
         </div>
-        <h1>buttons here</h1>
-<button className="btn btn-success" onClick={() => setFilterState("Trade")}>Trade</button>
-<button className="btn btn-success" onClick={() => setFilterState("")}>reset</button>
-<button className="btn btn-success" onClick={() => setFilterState("Gig")}>Gig</button>
-<button className="btn btn-success" onClick={() => setFilterState("Favor")}>Favor</button>
-<button className="btn btn-success" onClick={() => setFilterState(null)}>null</button>
+
+    <div id="filtertoggles" className="row">
+
+            <button className="col btn btn-success" onClick={() => setFilterState("Trade")}>Trade</button>
+            <button className="col btn btn-success" onClick={() => setFilterState("Gig")}>Gig</button>
+            <button className="col btn btn-success" onClick={() => setFilterState("Favor")}>Favor</button>
+    </div>
+
         {/* EDIT POST */}
   
         {/* add edit post modal to popup on click of Edit button */}
