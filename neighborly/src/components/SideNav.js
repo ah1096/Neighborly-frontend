@@ -1,39 +1,68 @@
+import { Link } from "react-router-dom";
+import { useGlobalState } from "../context/GlobalState";
+import { useNavigate } from "react-router-dom"
+import AuthService from "../services/auth.service"
+
 
 
 export default function SideNav(){
+
+    const [ state, dispatch ] = useGlobalState();
+
+    let navigate = useNavigate();
+
+
+
     return(
 
-<div className="row pe-5">
-    <div id="sidenav" className="d-flex w-25 col-12 flex-column flex-shrink-0 p-3 mt-5 bg-light">
+<div className="ms-3 row pe-5 text-align-center">
+    <div id="sidenav" className="d-flex w-25 col-12 flex-column flex-shrink-0 p-3 mt-5">
 
-        
         <ul className="nav nav-pills flex-column mb-auto">
 
-        <li className="nav-item">
-            <a href="#" className="nav-link link-dark" >
-            {/* <svg className="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg> */}
-            Dashboard
-            </a>
+
+        {state.currentUser && (
+                        
+            <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+                {/* <a href="#" className="row nav-link link-dark" > */}
+                <Link to="/main" className="nav-link">
+                <i className="col-4 bi bi-house-door-fill me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Home
+                    </span>
+                </Link>
+                {/* </a> */}
+            </li>
+                    )}
+
+        <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+            {/* <a href="#" className="row nav-link link-dark"> */}
+                <Link to='/exchange' className="nav-link">
+                    <i className="col-4 bi bi-arrow-left-right me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Exchange
+                    </span>
+                </Link>
+            {/* </a> */}
         </li>
 
-        <li>
-            <a href="#" className="nav-link link-dark">
-            {/* <svg className="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg> */}
-            Exchange
-            </a>
+        <li id="sidenavitem" className="nav-item badge rounded-pill mb-3">
+            {/* <a href="#" className="row nav-link link-dark"> */}
+                <Link to='/social' className="nav-link">
+                    <i className="col-4 bi bi-chat-left-heart me-3"></i>
+                    <span id="sidenavtext" className="col-8">
+                        Social
+                    </span>
+                </Link>
+            {/* </a> */}
         </li>
 
-        <li>
-            <a href="#" className="nav-link link-dark">
-            {/* <svg className="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg> */}
-            Social
-            </a>
-        </li>
-
-        <li>
-            <a href="#" className="nav-link link-dark">
-            {/* <svg className="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg> */}
-            Post
+        <li id="postbutton" className="nav-item badge rounded-pill mb-3">
+            <a href="#" className="row nav-link link-dark">
+                <i className="col-4bi bi-plus-lg me-3"></i>
+                <span id="sidenavtext" className="col-8">
+                    Post
+                </span>
             </a>
         </li>
 

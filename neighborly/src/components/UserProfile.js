@@ -1,3 +1,4 @@
+import SideNav from './SideNav.js';
 
 import defaulticon from './images/defaulticon.png';
 const image = {
@@ -36,43 +37,57 @@ export default function UserProfile(props){
 
     return(
 
-<div className="row d-flex justify-content-end align-items-start pe-5 ps-3">
-<div className="card mb-3 w-75">
-    <div className="row g-0">
-        <div className="col-md-4">
-        <img className="d-block mx-lg-auto img-fluid rounded-circle m-3" 
-                        loading="lazy" 
-                        alt="a generic neighborhood" 
-                        src= {image.imageUrl}
-                        style={{
-                            width: image.imageWidth,
-                            height: image.imageHeight
-                            }}
-                    ></img>
-        </div>
 
-        <div className="col-md-8">
-            <div className="card-body">
-            <h5 className="card-title">{userData.username + "   "}<span className="badge bg-secondary">{userData.roletag}</span></h5>
-            <p className="card-text">{userData.biotext}</p>
 
-            
-                <p>
-                    <button className="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        skills
-                    </button>
-                </p>
-                    <div className="collapse" id="collapseExample">
-                    <div className="card card-body">
-                        {userData.skills}
+<div className="row">
+
+    <div className="col-3">
+        <SideNav />
+    </div>
+
+
+    <div className="col-6">
+
+        
+            <div className="card mb-3 ">
+                <div className="row g-0">
+                    <div className="col-md-4">
+                    <img className="d-block mx-lg-auto img-fluid rounded-circle m-3" 
+                                    loading="lazy" 
+                                    alt="default user icon" 
+                                    src= {image.imageUrl}
+                                    style={{
+                                        width: image.imageWidth,
+                                        height: image.imageHeight
+                                    }}
+                                    ></img>
+                    </div>
+
+                    <div className="col-md-8">
+                        <div className="card-body">
+                        <h5 className="card-title">{userData.username + "   "}<span className="badge bg-secondary">{userData.roletag}</span></h5>
+                        <p className="card-text">{userData.biotext}</p>
+
+                        
+                            <p>
+                                <button className="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                    skills
+                                </button>
+                            </p>
+                            <div className="collapse" id="collapseExample">
+                                <div className="card card-body">
+                                    {userData.skills}
+                                </div>
+                            </div>
+
+                        <p className="card-text"><small className="text-muted">{userData.location}</small></p>
+                        </div>
                     </div>
                 </div>
-
-            <p className="card-text"><small className="text-muted">{userData.location}</small></p>
             </div>
-        </div>
     </div>
 </div>
-</div>
+                    
+
     )
 }

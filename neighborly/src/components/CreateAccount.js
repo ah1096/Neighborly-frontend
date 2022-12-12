@@ -4,8 +4,6 @@ import AuthService from "../services/auth.service";
 import { useNavigate } from "react-router-dom"
 
 
-
-
 export default function CreateAccount(){
 let navigate = useNavigate()
 
@@ -158,6 +156,7 @@ const [user, setUser] = useState({
             className="btn btn-primary" 
             type="submit" 
             value="Create Account"
+            id="button2"
             disabled={(
                 user.password &&
                 user.password.length >= 8 &&
