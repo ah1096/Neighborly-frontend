@@ -1,83 +1,84 @@
 import { useGlobalState } from "../context/GlobalState";
 import request from "../services/api.request";
 import React, { useState, useEffect } from "react";
+import SideNav from './SideNav.js'
 
 import defaulticon from "./images/defaulticon.png";
 const image = {
-  name: "defaulticon",
-  imageUrl: defaulticon,
-  imageHeight: 50,
-  imageWidth: 50,
+    name: "defaulticon",
+    imageUrl: defaulticon,
+    imageHeight: 50,
+    imageWidth: 50,
 };
 
 export default function Posts() {
-  const [state, dispatch] = useGlobalState();
-  const [postData, setPostData] = useState([]);
-  const [postContent, setPostContent] = useState("");
-  const [commentData, setCommentData] = useState([]);
-  const [comments, setComments] = useState("");
-  const [selectedTag, setSelectedTag] = useState(null);
+    const [state, dispatch] = useGlobalState();
+    const [postData, setPostData] = useState([]);
+    const [postContent, setPostContent] = useState("");
+    const [commentData, setCommentData] = useState([]);
+    const [comments, setComments] = useState("");
+    const [selectedTag, setSelectedTag] = useState(null);
 
-  const [tag, setTag] = useState([]);
+    const [tag, setTag] = useState([]);
 
-  async function getTag(e) {
+async function getTag(e) {
     let options = {
-      url: "exchanges/",
-      method: "GET",
+        url: "exchanges/",
+        method: "GET",
     };
     let resp = await request(options);
     setTag(resp.data);
-  }
+}
 
-  async function getPosts() {
+async function getPosts() {
     let options = {
-      url: "posts/",
-      method: "GET",
-      params: {
+        url: "posts/",
+        method: "GET",
+        params: {
         author_id: state.currentUser.user_id,
-      },
+    },
     };
     let resp = await request(options);
     setPostData(resp.data);
-  }
+}
 
-  async function getComments() {
+async function getComments() {
     let options = {
-      url: "comments/",
-      method: "GET",
-      params: {
+        url: "comments/",
+        method: "GET",
+        params: {
         author: state.currentUser.user_id,
-      },
+    },
     };
     let resp = await request(options);
     setCommentData(resp.data);
-  }
+}
 
-  useEffect(() => {
+useEffect(() => {
     getPosts();
     getTag();
     getComments();
-  }, []);
+}, []);
 
   // useEffect(() => {
   //     getPosts();
   // }, []);
 
-  async function createPost(e) {
+async function createPost(e) {
     e.preventDefault();
     let options = {
-      url: "posts/",
-      method: "POST",
-      data: {
+        url: "posts/",
+        method: "POST",
+        data: {
         content: postContent,
         author: state.currentUser.user_id,
         exTag: selectedTag,
-      },
+        },
     };
     console.log(selectedTag);
     let resp = await request(options);
     setPostData([...postData, resp.data]);
-  }
+}
 
   // async function editPost() {
   //     let options = {
@@ -99,21 +100,21 @@ export default function Posts() {
 
   // }, []);
 
-  async function createComment(postid) {
+async function createComment(postid) {
     let options = {
-      url: "comments/",
-      method: "POST",
-      data: {
+        url: "comments/",
+        method: "POST",
+        data: {
         comment: comments,
         author: state.currentUser.user_id,
         post: postid,
-      },
+    },
     };
     console.log(options);
     let resp = await request(options);
     setCommentData([...commentData, resp.data]);
     getPosts();
-  }
+}
   const [filterState, setFilterState] = useState("")
   let tagFilter = postData.filter(
     (filteredTag) => filteredTag.exTag === filterState
@@ -123,8 +124,15 @@ console.log(postData)
   /////////////////////////////////////////////RETURN//////////////////////////////////////////////////
   /////////////////////////////////////////////RETURN//////////////////////////////////////////////////
 if (filterState === "") {
+
+
   return (
-    <div>
+    <div className="row">
+                <div className="col-3">
+                    <SideNav />
+                </div>
+
+    <div className="col-6">
       {/* CREATE POST */}
       <div>
         <div className="card">
@@ -274,8 +282,7 @@ if (filterState === "") {
                   ></img>
                 </div>
 
-                {/* map over posts */}
-                {/* then check to see if each post has a tag */}
+               
                 <div className="col-8">
                   <h6 id="postauthor" className="card-title">
                     {post.author}
@@ -495,12 +502,21 @@ if (filterState === "") {
         </div>
       ))}
     </div>
+    </div>
   );
 }
 if (filterState !== "") {
     console.log("filter: " + tagFilter)
     return (
-      <div>
+
+        <div className="row">
+                <div className="col-3">
+                    <SideNav />
+                </div>
+
+
+
+      <div className="col-6">
         {/* CREATE POST */}
         <div>
           <div className="card">
@@ -648,8 +664,7 @@ if (filterState !== "") {
                     ></img>
                   </div>
   
-                  {/* map over posts */}
-                  {/* then check to see if each post has a tag */}
+                 
                   <div className="col-8">
                     <h6 id="postauthor" className="card-title">
                       {post.author}
@@ -869,6 +884,7 @@ if (filterState !== "") {
           </div>
         ))}
       </div>
+    </div>
     );
   }
 }
