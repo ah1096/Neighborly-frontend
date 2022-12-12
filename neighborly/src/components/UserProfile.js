@@ -1,6 +1,12 @@
 import SideNav from './SideNav.js';
 
 import defaulticon from './images/defaulticon.png';
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useGlobalState } from "../context/GlobalState.js";
+import request from '../services/api.request';
+import { useState } from "react"
+
 const image = {
     name: 'defaulticon',
     imageUrl: defaulticon,
@@ -8,11 +14,6 @@ const image = {
     imageWidth: 200,
 };
 
-import React, { useEffect } from "react";
-import axios from "axios";
-import { useGlobalState } from "../context/GlobalState.js";
-import request from '../services/api.request';
-import { useState } from "react"
 
 
 export default function UserProfile(props){
