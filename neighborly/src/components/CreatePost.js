@@ -14,7 +14,7 @@ export default function CreatePost(){
 
             <div className="row">
                 
-                <div className="col-1">
+                <div className="col-2">
                     <img className="d-block mx-lg-auto img-fluid rounded-circle" 
                         loading="lazy" 
                         alt="default user icon" 
@@ -26,7 +26,7 @@ export default function CreatePost(){
                     ></img>
                 </div>
 
-                <div className="col-11">
+                <div className="col-10">
                         <form> 
                             <div className="input-group">
                                 <input type="text" className="form-control" placeholder="Write a post..." data-bs-toggle="modal" data-bs-target="#createpostmodal" />

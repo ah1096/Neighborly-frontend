@@ -14,7 +14,8 @@ export default function Post(){
     return(
 
 // USER POST
-        <div className="card w-75">
+    <div>
+        <div className="card">
             <div className="card-body">
                 <div className="row">
                     <div className="col">
@@ -84,6 +85,7 @@ export default function Post(){
                     </div>
             </div>
         </div>
+    </div>
 
         
     )

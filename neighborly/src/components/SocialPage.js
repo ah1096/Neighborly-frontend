@@ -1,7 +1,7 @@
 import Posts from './Posts.js';
 import SideNav from'./SideNav.js'
 
-export default function MainPage(){
+export default function ExchangePage(){
     return(
         <span>
             <div className="row">
