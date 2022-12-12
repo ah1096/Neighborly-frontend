@@ -50,7 +50,7 @@ export default function UserProfile(props){
     <div className="col-6">
 
         
-            <div className="card mb-3 ">
+            <div className="card mb-3 shadow-sm bg-body rounded">
                 <div className="row g-0">
                     <div className="col-md-4">
                     <img className="d-block mx-lg-auto img-fluid rounded-circle m-3" 

@@ -7,6 +7,7 @@
     border: none;
     width: 80px;
     margin-left: 30px;
+    color: white;
 }
 
 #button2 {
@@ -50,6 +51,22 @@ i {
 
 #postprofilepic{
     margin-right: 10px;
+}
+
+#viewcommentsbtn{
+    outline: none;
+    background-color: #FFFFFF;
+    color:#058ED9;
+}
+
+#filterselectbtn{
+    background-color:#6BA850;
+    outline: none;
+    color: #FFFFFF;
+}
+
+#postcard{
+    border: 1px solid lightgray;
 }
 
 

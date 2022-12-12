@@ -61,9 +61,7 @@ useEffect(() => {
     getComments();
 }, []);
 
-  // useEffect(() => {
-  //     getPosts();
-  // }, []);
+
 
 async function createPost(e) {
     e.preventDefault();
@@ -81,25 +79,6 @@ async function createPost(e) {
     setPostData([...postData, resp.data]);
 }
 
-  // async function editPost() {
-  //     let options = {
-  //         url: "post/",
-  //         method: "PATCH",
-  //         data: {
-  //             content: postContent,
-  //             author: state.currentUser.user_id,
-  //         },
-  //     };
-  //     let resp = await request(options);
-  //     setPostData([
-  //         ...postData,
-  //         resp.data
-  //     ])
-  // }
-
-  // useEffect(() => {
-
-  // }, []);
 
 async function createComment(postid) {
     let options = {
@@ -207,22 +186,12 @@ if (filterState === "") {
 </div>
 
 
-                    {/* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx */}
-
-
-
-
-
-
-
-
-
-                </div>
+</div>
 
     <div className="col-6">
       {/* CREATE POST */}
       <div>
-        <div className="card">
+        <div className="card mb-3 shadow-sm bg-body rounded">
           <div className="card-body">
             <div className="row">
               <div className="col-2">
@@ -341,10 +310,10 @@ if (filterState === "") {
 
 
 
-    <div id="filtertoggles" className="row">
-        <button className="col btn btn-success" onClick={() => setFilterState("Trade")}>Trade</button>
-        <button className="col btn btn-success" onClick={() => setFilterState("Gig")}>Gig</button>
-        <button className="col btn btn-success" onClick={() => setFilterState("Favor")}>Favor</button>
+    <div id="filtertoggles" className="row justify-content-center mt-3 mb-3">
+        <button id="filterselectbtn" className="col-4 btn btn-sm" onClick={() => setFilterState("Trade")}>Trade</button>
+        <button id="filterselectbtn" className="col-4 btn btn-sm" onClick={() => setFilterState("Gig")}>Gig</button>
+        <button id="filterselectbtn" className="col-4 btn btn-sm" onClick={() => setFilterState("Favor")}>Favor</button>
     </div>
       {/* EDIT POST */}
 
@@ -353,7 +322,7 @@ if (filterState === "") {
       {/* // USER POST */}
       {postData.map((post) => (
         <div key={post.id}>
-          <div className="card">
+          <div id="postcard" className="card mb-3 shadow-sm p-3 bg-body rounded">
             <div className="card-body">
               <div className="row">
                 <div className="col">
@@ -440,14 +409,15 @@ if (filterState === "") {
               {/* COMMENT DROPDOWN */}
               <p>
                 <button
-                  className="btn btn-sm btn-primary"
+                  id="viewcommentsbtn"
+                  className="btn btn-sm"
                   type="button"
                   data-bs-toggle="collapse"
                   data-bs-target="#collapseExample"
                   aria-expanded="false"
                   aria-controls="collapseExample"
                 >
-                  view # comments
+                  view comments
                 </button>
               </p>
 
@@ -666,7 +636,7 @@ if (filterState !== "") {
       <div className="col-6">
         {/* CREATE POST */}
         <div>
-          <div className="card">
+          <div className="card mb-3 shadow-sm bg-body rounded">
             <div className="card-body">
               <div className="row">
                 <div className="col-2">
@@ -783,11 +753,11 @@ if (filterState !== "") {
           </div>
         </div>
 
-    <div id="filtertoggles" className="row">
+    <div id="filtertoggles" className="row justify-content-center mt-3 mb-3">
 
-            <button className="col btn btn-success" onClick={() => setFilterState("Trade")}>Trade</button>
-            <button className="col btn btn-success" onClick={() => setFilterState("Gig")}>Gig</button>
-            <button className="col btn btn-success" onClick={() => setFilterState("Favor")}>Favor</button>
+            <button id="filterselectbtn" className="col-4 btn btn-sm" onClick={() => setFilterState("Trade")}>Trade</button>
+            <button id="filterselectbtn"  className="col-4 btn btn-sm" onClick={() => setFilterState("Gig")}>Gig</button>
+            <button id="filterselectbtn"  className="col-4 btn btn-sm" onClick={() => setFilterState("Favor")}>Favor</button>
     </div>
 
         {/* EDIT POST */}
@@ -797,7 +767,7 @@ if (filterState !== "") {
         {/* // USER POST */}
         {tagFilter.map((post) => (
           <div key={post.id}>
-            <div className="card">
+            <div id="postcard" className="card mb-3 shadow-sm p-3 bg-body rounded">
               <div className="card-body">
                 <div className="row">
                   <div className="col">
@@ -823,7 +793,7 @@ if (filterState !== "") {
                     </h6>
   
                     <p id="wherewhen" className="text-muted">
-                      {post.author.location} | {post.created_on}
+                      {post.created_on}
                     </p>
                   </div>
   
@@ -884,14 +854,15 @@ if (filterState !== "") {
                 {/* COMMENT DROPDOWN */}
                 <p>
                   <button
-                    className="btn btn-sm btn-primary"
+                    id="viewcommentsbtn"
+                    className="btn btn-sm"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseExample"
                     aria-expanded="false"
                     aria-controls="collapseExample"
                   >
-                    view # comments
+                    view comments
                   </button>
                 </p>
   

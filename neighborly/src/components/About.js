@@ -41,7 +41,7 @@ export default function About(props){
                     <div>
                         <p>Welcome to Neighborly, an app for forging connections both friendly and commercial.</p>
                         <p>
-                        Locavore mixtape polaroid, biodiesel pork belly woke bitters affogato thundercats bruh. Ramps freegan ennui godard hell of, polaroid before they sold out. Hoodie fashion axe dreamcatcher glossier, chia next level typewriter franzen edison bulb VHS shaman marfa. La croix kale chips disrupt prism, selfies cold-pressed freegan distillery. Brooklyn chambray ascot you probably haven't heard of them. Squid prism blog banjo flannel. Adaptogen pop-up photo booth hella taxidermy quinoa blog gluten-free twee hexagon tonx keffiyeh fashion axe trust fund raclette.
+                        Create an account or login to start meeting other members of your local community! Start a trade, borrow something, or just share your feelings.
                         </p>
                     </div>
                     

@@ -4,6 +4,14 @@ import { useNavigate } from "react-router-dom"
 import AuthService from "../services/auth.service"
 
 import logo from './images/Neighborly-Logo.png';
+import defaulticon from "./images/defaulticon.png";
+
+const image = {
+    name: "defaulticon",
+    imageUrl: defaulticon,
+    imageHeight: 50,
+    imageWidth: 50,
+};
 
 const NavLogo = {
     name: 'NavLogo',
@@ -47,13 +55,6 @@ export default function Navbar(props) {
 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    {state.currentUser && (
-                        <li className="nav-item">
-                        <Link to="/profile" className="nav-link">
-                            Profile Page
-                        </Link>
-                        </li>
-                    )}
 
 {/* MAIN PAGE filters all posts to show those only in the user's location
                     {state.currentUser && (
@@ -84,6 +85,27 @@ export default function Navbar(props) {
 
                     </ul>
 
+
+
+
+
+                    {state.currentUser && (
+                        <div className="nav-item me-1">
+                        <Link to="/profile" className="nav-link">
+                            <img
+                                className="d-block mx-lg-auto img-fluid rounded-circle"
+                                loading="lazy"
+                                alt="default user icon"
+                                src={image.imageUrl}
+                                style={{
+                                    width: image.imageWidth,
+                                    height: image.imageHeight,
+                                }}
+                            ></img>
+                        </Link>
+                        </div>
+                    )}
+
                     {state.currentUser && (
                         <div className="d-flex">
                             <Link to='/' className="nav-link" 
@@ -94,7 +116,7 @@ export default function Navbar(props) {
 
                     {!state.currentUser && (
                     <div className="d-flex">
-                        <Link to="/login" id="button" className="btn btn-primary mb-1" type="submit">
+                        <Link to="/login" id="button" className="btn mb-1" type="submit">
                             login 
                         </Link>
                     </div>
@@ -104,7 +126,7 @@ export default function Navbar(props) {
 
                     {!state.currentUser && (
                     <div className="d-flex">
-                        <Link to="/register" id="button" className="btn btn-primary mb-1" type="submit">
+                        <Link to="/register" id="button" className="btn mb-1" type="submit">
                             sign up
                         </Link>
                     </div>
